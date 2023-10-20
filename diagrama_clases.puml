@@ -1,0 +1,56 @@
+@startuml Bibiblioteca
+Revista --> Documento
+Libro --> Documento
+Documento --> Biblioteca
+
+title
+Diagrama de Clases Biblioteca
+end title
+
+
+
+class Biblioteca{
+/' 
+    // Esto es un comentario de bloque
+    // proximos codigos
+'/
+    + main()
+
+/'
+    //proximos metodos
+'/
+}
+
+class Documento{
+    'Atributos
+    + String Titulo 
+    + String autores
+    + int id 
+    + GregorianCalendar anioPublicacion
+    + boolean disponibilidad
+    'Metodos
+    + Documento()
+    + Documento(Atributos)
+}   
+
+class Revista{
+    'Atributos
+    + String ISSN
+    + String nombre
+    + int Volumen
+    'Comentario de una linea
+    + prestamo()
+    + devolucion()
+}
+
+class Libro{
+    'Atributos
+    + String ISBN
+    + String editorial
+    + String edicion
+    'Comentario de una linea
+    + prestamo()
+    + devolucion()
+}
+
+@enduml

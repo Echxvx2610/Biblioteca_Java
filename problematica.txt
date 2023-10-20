@@ -1,0 +1,66 @@
+Biblioteca
+
+1.Inventario: libro,revista,estudiante
+2.Prestamo
+  - libro
+  - revista
+
+3. Devoluciones
+4. Deudores
+5. Salir
+
+Clases:
+-Documento(padre)
+    -atributos
+        titulo
+        autores
+        id
+        año de publicacion
+        disponibilidad
+    
+    - metodos
+        Documento()
+        Documento(todos los atributos)
+
+-Libro(hijo)
+    -*atributos heredados*
+    -atributos propios
+        ISBN
+        editorial
+        edicion
+
+    - metodos
+        -prestamo()
+        -devolucion()
+
+
+- Revista(hijo)
+    -*atributos heredados*
+    -atributos propios
+        ISSN
+        nombre
+        volumen
+    -metodos
+        -prestamo()
+        -devolucion()
+
+    - metodos
+
+
+- Biblioteca(Clase main)
+    control.inventario() // inicializa inventario con 10 libros y revistas
+    control.menu()
+
+    // Al inicializar Biblioteca debe haber un Inventario por default
+    // para operar
+
+    Ejemplo:
+        libro[0] = new Libro(atributos...)
+        ...
+        ...
+        ...
+        ...
+        revista[0] =  new Revistas(atributos...)
+
+
+
