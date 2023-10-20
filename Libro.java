@@ -1,48 +1,67 @@
-package Clases.Biblioteca;
+/*
+ * @ author: Cristian A. Echevarria
+ * @ author: Oscar A. Teran
+ * @ version: 1.0
+ */
 
-public class Libro {
-    // atributos
-    public String titulo;
-    public String autor;
-    public String isbn;
-    public int anioPublicacion;
-    public String genero;
-    public int numeroPaginas;
-    public boolean enStock;
+package Sistemas_comp.Biblioteca_Java;
 
-    // método constructor
-    Libro();
-    this.titulo = "";
-    this.autor = "";
-    this.isbn = "";
-    this.anioPublicacion = 0;
-    this.genero = "genero";
-    this.numeroPaginas = 0;
-    this.enStock = false;
+public class Libro extends Documento {
+    // Atributos propios de clase hija
+    private String ISBN;
+    private String editorial;
+    private int edicion;
 
-    // sobrecarga de constructores
-    Libro(String titulo, String autor, String isbn, int anioPublicacion, String genero, int numeroPaginas, boolean enStock){
-        this.titulo = titulo;
-        this.autor = autor;
-        this.isbn = isbn;
-        this.anioPublicacion = anioPublicacion;
-        this.genero = genero;
+    // Constructor default
+    public Libro() {
+        // atributos superclase
+        super();
+        this.ISBN = "";
+        this.editorial = "";
+        this.edicion = 0;
     }
 
-    // métodos get y set
-    public String getTitulo(){
-        return this.titulo;
+    // Construcor con todos los atributos
+    public Libro(String Titulo, String Autor, String ID, int AnioPublicacion, boolean Disponible, String iSBN,
+            String editorial, int edicion) {
+        super(Titulo, Autor, ID, AnioPublicacion, Disponible);
+        ISBN = iSBN;
+        this.editorial = editorial;
+        this.edicion = edicion;
     }
 
-    public String setTitulo(){
-        this.titulo = titulo;
+    // Metodos get and set
+    public String getISBN() {
+        return ISBN;
     }
 
-    public String getAutor(){
-        return this.autor;
+    public void setISBN(String ISBN) {
+        this.ISBN = ISBN;
     }
 
-    public String setAutor(){
-        this.autor = autor;
+    public String getEditorial() {
+        return editorial;
+    }
+
+    public void setEditorial(String editorial) {
+        this.editorial = editorial;
+    }
+
+    // Getter and Setter methods for edicion
+    public int getEdicion() {
+        return edicion;
+    }
+
+    public void setEdicion(int edicion) {
+        this.edicion = edicion;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                "ISBN: " + ISBN + "\n" +
+                "Editorial: " + editorial + "\n" +
+                "Edicion: " + edicion + "\n";
+
     }
 }
