@@ -6,6 +6,7 @@
 
 package Sistemas_comp.Biblioteca_Java;
 
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 public class Biblioteca {
@@ -25,18 +26,17 @@ public class Biblioteca {
     // Array de Estudiantes
     Estudiante estudiantes[] = new Estudiante[20];
     int cantidadEstudiantes = 0;
+    // Array de Prestamos
+    Prestamo prestamos[] = new Prestamo[10];
+    int cantidadPrestamos = 0;
 
     public static void main(String[] args) {
-        // creacion de un objeto para testear Documento
-        // Documento miDocumento = new Documento("El retrano de la muerte", "Ray
-        // Bradbury", "0001", 1955, true);
-        // System.out.println(miDocumento);
-        // Libro miLibro = new Libro();
-        // System.out.println(miLibro);
-        control.registro();
-        control.generarTablaEstudiantes();
-        control.generarTablaLibros();
-        control.generarTablaRevistas();
+
+        // control.registro();
+        // control.generarTablaEstudiantes();
+        // control.generarTablaLibros();
+        // control.generarTablaRevistas();
+        control.generarTablaPrestamos();
         control.menu();
     }
 
@@ -109,7 +109,7 @@ public class Biblioteca {
         estudiantes[18] = new Estudiante("Luis", "Zazueta", "Sistemas Computacionales", "2376005");
         estudiantes[19] = new Estudiante("Raul", "Felix", "Sistemas Computacionales", "2376005");
 
-        // registrar Libros y Revistas
+        // registrar Libros
         libros[0] = new Libro("El retrato de la muerte", "Ray Bradbury", "0001", 1955, true, "434JKLJFAISF7", "Planeta",
                 1);
         libros[1] = new Libro("Solo tu", "Paulo Cohelo", "0002", 1955, true, "DJF223JKMNA", "Planeta", 3);
@@ -126,6 +126,8 @@ public class Biblioteca {
                 3);
         libros[9] = new Libro("Piratas del Caribe", "Ray Bradbury", "0010", 1955, true, "POIFAOSPFAI977", "Planeta", 3);
         libros[10] = new Libro("El Principio", "Ray Bradbury", "0011", 1955, true, "IKAFOIA8S66AFG", "Planeta", 3);
+
+        // registrar Revistas
         revistas[0] = new Revista("10 habitos exitosos", "Sandra Bullock", "0022", 1955, true, "KLAHSFIASFU78903",
                 "Planeta", 1);
         revistas[1] = new Revista("Muy interesante", "Sandra Bullock", "0012", 1955, true, "ASOFIAS7FA65", "Planeta",
@@ -144,6 +146,28 @@ public class Biblioteca {
         revistas[9] = new Revista("Ecomista", "Ray Bradbury", "0020", 1955, true, "87A5S68DASGHDJAAS", "Planeta", 3);
         revistas[10] = new Revista("Cosmopolitan", "Ray Bradbury", "0021", 1955, true, "89567A467DSGYAGS", "Planeta",
                 3);
+
+        // registrar Prestamos
+        prestamos[0] = new Prestamo(001, "23760067", 1, new GregorianCalendar(2023, 10, 21),
+                new GregorianCalendar(2023, 10, 28), false);
+        prestamos[1] = new Prestamo(002, "23760068", 2, new GregorianCalendar(2023, 10, 21),
+                new GregorianCalendar(2023, 10, 28), false);
+        prestamos[2] = new Prestamo(003, "23760069", 3, new GregorianCalendar(2023, 10, 21),
+                new GregorianCalendar(2023, 10, 28), false);
+        prestamos[3] = new Prestamo(004, "23760070", 4, new GregorianCalendar(2023, 10, 21),
+                new GregorianCalendar(2023, 10, 28), false);
+        prestamos[4] = new Prestamo(005, "23760071", 5, new GregorianCalendar(2023, 10, 21),
+                new GregorianCalendar(2023, 10, 28), false);
+        prestamos[5] = new Prestamo(006, "23760072", 6, new GregorianCalendar(2023, 10, 21),
+                new GregorianCalendar(2023, 10, 28), false);
+        prestamos[6] = new Prestamo(007, "23760073", 7, new GregorianCalendar(2023, 10, 21),
+                new GregorianCalendar(2023, 10, 28), false);
+        prestamos[7] = new Prestamo(0011, "23760074", 8, new GregorianCalendar(2023, 10, 21),
+                new GregorianCalendar(2023, 10, 28), false);
+        prestamos[8] = new Prestamo(0012, "23760075", 9, new GregorianCalendar(2023, 10, 21),
+                new GregorianCalendar(2023, 10, 28), false);
+        prestamos[9] = new Prestamo(010, "23760076", 10, new GregorianCalendar(2023, 10, 21),
+                new GregorianCalendar(2023, 10, 28), false);
     }
 
     void generarTablaEstudiantes() {
@@ -169,6 +193,28 @@ public class Biblioteca {
         // Pie de la tabla
         System.out.println(
                 "----------------------------------------------------------------------------------------------");
+    }
+
+    void generarTablaPrestamos() {
+        // Imprimir la cabecera de la tabla
+        System.out.println(
+                "---------------------------------------------------------------------------------------------");
+        System.out.printf("%-20s %-20s %-10s %-20s %-10s\n",
+                "\tID", "ID_Documento", "Fecha_Prestamo", "Fecha_Vencimiento", "Con Atraso");
+        System.out.println(
+                "---------------------------------------------------------------------------------------------");
+
+        for (int i = 0; i < prestamos.length; i++) {
+            Prestamo prestamo = prestamos[i];
+            if (prestamo != null) {
+                System.out.printf("%-20s %-20s %-10s %-20s %-10s\n",
+                        prestamo.getId(),
+                        prestamo.getIdDocumento(),
+                        prestamo.getFechaPrestamo(),
+                        prestamo.getFechaVencimiento(),
+                        prestamo.isConAtraso());
+            }
+        }
     }
 
     void generarTablaLibros() {
