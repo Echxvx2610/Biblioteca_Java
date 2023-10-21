@@ -56,7 +56,6 @@ public class Libro extends Documento {
         this.edicion = edicion;
     }
 
-    @Override
     public String toString() {
         return super.toString() +
                 "ISBN: " + ISBN + "\n" +
