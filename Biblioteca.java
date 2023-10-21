@@ -19,14 +19,24 @@ public class Biblioteca {
     // Array de Libros
     Libro libros[] = new Libro[100];
     int cantidadLibros = 0;
+    // Array de Revistas
+    Revista revistas[] = new Revista[100];
+    int cantidadRevistas = 0;
+    // Array de Estudiantes
+    Estudiante estudiantes[] = new Estudiante[20];
+    int cantidadEstudiantes = 0;
 
     public static void main(String[] args) {
         // creacion de un objeto para testear Documento
-        Documento miDocumento = new Documento("El retrano de la muerte", "Ray Bradbury", "0001", 1955, true);
-        System.out.println(miDocumento);
-        Libro miLibro = new Libro();
-        System.out.println(miLibro);
-
+        // Documento miDocumento = new Documento("El retrano de la muerte", "Ray
+        // Bradbury", "0001", 1955, true);
+        // System.out.println(miDocumento);
+        // Libro miLibro = new Libro();
+        // System.out.println(miLibro);
+        control.registro();
+        control.generarTablaEstudiantes();
+        control.generarTablaLibros();
+        control.generarTablaRevistas();
         control.menu();
     }
 
@@ -49,12 +59,6 @@ public class Biblioteca {
             opcion = sc.nextInt();
 
             switch (opcion) {
-                case -1: // llamar al método mostrar documentos
-                    control.mostrarDocumentos();
-                    break;
-                case 0: // llamar al método registrar documento
-                    control.registrarDocumento();
-                    break;
                 case 1: // llamar al método ver inventario
                     control.verInventario();
                     break;
@@ -82,31 +86,144 @@ public class Biblioteca {
         } while (opcion != 7); // se sale del menú si seleccionan 7
     }
 
-    void registrarDocumento() {
-        // 1. Crear un objeto para testear Documento
-        Documento documento = new Documento();
-        sc.nextLine();
-        // 2. Pedir los datos del documento
-        System.out.println("Ingresa los datos del documento");
-        System.out.print("Titulo: ");
-        documento.setTitulo(sc.nextLine());
-        System.out.print("Autor: ");
-        documento.setAutor(sc.nextLine());
-        System.out.print("ID: ");
-        documento.setID(sc.nextLine());
-        System.out.print("Anio de publicacion: ");
-        documento.setAnioPublicacion(sc.nextInt());
-        sc.nextLine();
-        System.out.print("Disponible: ");
-        documento.setDisponible(sc.nextBoolean());
-        // 3. Llamar al método para registrar el documento
-        documentos[cantidadDocumentos] = documento;
-        cantidadDocumentos++;
+    void registro() {
+        // registro de array 20 estudiantes
+        estudiantes[0] = new Estudiante("Cristian", "Echevarria", "Sistemas Computacionales", "2376005");
+        estudiantes[1] = new Estudiante("Oscar", "Teran", "Sistemas Computacionales", "2376006");
+        estudiantes[2] = new Estudiante("Israel ", "Tejeda", "Sistemas Computacionales", "2376007");
+        estudiantes[3] = new Estudiante("Cristian", "Malacara", "Sistemas Computacionales", "2376008");
+        estudiantes[4] = new Estudiante("Rosa", "Melano", "Sistemas Computacionales", "2376009");
+        estudiantes[5] = new Estudiante("Alma", "Marcela", "Sistemas Computacionales", "2376005");
+        estudiantes[6] = new Estudiante("Elvis", "Cocho", "Sistemas Computacionales", "2376005");
+        estudiantes[7] = new Estudiante("Bad bunny", "Mamberroi", "Sistemas Computacionales", "2376005");
+        estudiantes[8] = new Estudiante("Luis Miguel", "Ferras", "Sistemas Computacionales", "2376005");
+        estudiantes[9] = new Estudiante("Felix", "Navarro", "Sistemas Computacionales", "2376005");
+        estudiantes[10] = new Estudiante("Alejandro", "Mendoza", "Sistemas Computacionales", "2376005");
+        estudiantes[11] = new Estudiante("Oscar", "Ojeda", "Sistemas Computacionales", "2376006");
+        estudiantes[12] = new Estudiante("Gael ", "Olea", "Sistemas Computacionales", "2376007");
+        estudiantes[13] = new Estudiante("Alonso", "Marquez", "Sistemas Computacionales", "2376008");
+        estudiantes[14] = new Estudiante("Nestor", "Romero", "Sistemas Computacionales", "2376009");
+        estudiantes[15] = new Estudiante("Abelardo", "Castro", "Sistemas Computacionales", "2376005");
+        estudiantes[16] = new Estudiante("Consuelo", "Sanchez", "Sistemas Computacionales", "2376005");
+        estudiantes[17] = new Estudiante("Alejandra", "Ruiz", "Sistemas Computacionales", "2376005");
+        estudiantes[18] = new Estudiante("Luis", "Zazueta", "Sistemas Computacionales", "2376005");
+        estudiantes[19] = new Estudiante("Raul", "Felix", "Sistemas Computacionales", "2376005");
+
+        // registrar Libros y Revistas
+        libros[0] = new Libro("El retrato de la muerte", "Ray Bradbury", "0001", 1955, true, "434JKLJFAISF7", "Planeta",
+                1);
+        libros[1] = new Libro("Solo tu", "Paulo Cohelo", "0002", 1955, true, "DJF223JKMNA", "Planeta", 3);
+        libros[2] = new Libro("La dama de negro", "Guillermo Del Toro", "0003", 1955, true, "KAJSKDJAKSFU8674B",
+                "Planeta", 3);
+        libros[3] = new Libro("La autopista", "Juan Rulfo", "0004", 1955, true, "ASJDAFS8743", "Planeta", 3);
+        libros[4] = new Libro("Breaking bad", "Ray Bradbury", "0005", 1955, true, "ASKFJAS7530", "Planeta", 3);
+        libros[5] = new Libro("Los infinitos", "Dr.Felix", "0006", 1955, true, "DAOOIASD8263", "Planeta", 3);
+        libros[6] = new Libro("Principio del derecho", "Ray Bradbury", "0007", 1955, true, "ASDU6ASFHKAJFH", "Planeta",
+                3);
+        libros[7] = new Libro("Que pasa con mi cuerpo?", "Jordi Rosado", "0008", 1955, true, "AS8D7AFHSJFASF",
+                "Planeta", 3);
+        libros[8] = new Libro("las cronicas de Narnia", "C.S. Lewis", "0009", 1955, true, "GOJOUE8978A6GS", "Planeta",
+                3);
+        libros[9] = new Libro("Piratas del Caribe", "Ray Bradbury", "0010", 1955, true, "POIFAOSPFAI977", "Planeta", 3);
+        libros[10] = new Libro("El Principio", "Ray Bradbury", "0011", 1955, true, "IKAFOIA8S66AFG", "Planeta", 3);
+        revistas[0] = new Revista("10 habitos exitosos", "Sandra Bullock", "0022", 1955, true, "KLAHSFIASFU78903",
+                "Planeta", 1);
+        revistas[1] = new Revista("Muy interesante", "Sandra Bullock", "0012", 1955, true, "ASOFIAS7FA65", "Planeta",
+                3);
+        revistas[2] = new Revista("National Geographic", "Ray Bradbury", "0013", 1955, true, "ASUYTFASYGABJKSD",
+                "Planeta", 3);
+        revistas[3] = new Revista("SpaceX", "Elon Musk", "0014", 1955, true, "KAHSFUAISTFA67S", "Planeta", 3);
+        revistas[4] = new Revista("Tesla el gigante", "Elon Musk", "0015", 1955, true, "76A54768UHJKAFDS", "Planeta",
+                3);
+        revistas[5] = new Revista("History channel", "Ray Bradbury", "0016", 1955, true, "A795S87ASFGKJA", "Planeta",
+                3);
+        revistas[6] = new Revista("Animal Planet", "Ray Bradbury", "0017", 1955, true, "ASOIFYAS76FA1", "Planeta", 3);
+        revistas[7] = new Revista("Para adultos", "Ray Bradbury", "0018", 1955, true, "OAIUSI9FI07AS08F", "Planeta", 3);
+        revistas[8] = new Revista("Emprendedores", "Ray Bradbury", "0019", 1955, true, "APS9F87A9SFDAHSJD", "Planeta",
+                3);
+        revistas[9] = new Revista("Ecomista", "Ray Bradbury", "0020", 1955, true, "87A5S68DASGHDJAAS", "Planeta", 3);
+        revistas[10] = new Revista("Cosmopolitan", "Ray Bradbury", "0021", 1955, true, "89567A467DSGYAGS", "Planeta",
+                3);
     }
 
-    void mostrarDocumentos() {
-        for (int i = 0; i < cantidadDocumentos; i++) {
-            System.out.println("Documento " + (i + 1) + ":" + "\n" + documentos[i] + "\n");
+    void generarTablaEstudiantes() {
+        // Imprimir la cabecera de la tabla
+        System.out.println(
+                "----------------------------------------------------------------------------------------------");
+        System.out.printf("%-20s %-20s %-30s %-20s\n", "Nombre", "Apellido", "\tCarrera", "Número de Estudiante");
+        System.out.println(
+                "----------------------------------------------------------------------------------------------");
+
+        // Iterar a través del array de estudiantes y mostrar la información de cada
+        // estudiante
+        for (int i = 0; i < estudiantes.length; i++) {
+            Estudiante estudiante = estudiantes[i];
+            if (estudiante != null) {
+                System.out.printf("%-20s %-20s %-30s %-20s\n",
+                        estudiante.getNombre(),
+                        estudiante.getApellido(),
+                        estudiante.getCarrera(),
+                        estudiante.getNumeroControl());
+            }
+        }
+        // Pie de la tabla
+        System.out.println(
+                "----------------------------------------------------------------------------------------------");
+    }
+
+    void generarTablaLibros() {
+        // Imprimir la cabecera de la tabla
+        System.out.println(
+                "----------------------------------------------------------------------------------------------------------");
+        System.out.printf("%-20s %-20s %-10s %-20s %-10s %-18s %-10s %-5s\n",
+                "\tTitulo", "Autor", "ID", "Año_Pub",
+                "Disp", "ISBN", "Editorial", "Edicion");
+        System.out.println(
+                "-----------------------------------------------------------------------------------------------------------");
+
+        for (int i = 0; i < libros.length; i++) {
+            Libro libro = libros[i];
+            if (libro != null) {
+                System.out.printf("%-25s %-20s %-10s %-20s %-10s %-20s %-10s %-5s\n",
+                        libro.getTitulo(),
+                        libro.getAutor(),
+                        libro.getID(),
+                        libro.getAnioPublicacion(),
+                        libro.isDisponible(),
+                        libro.getISBN(),
+                        libro.getEditorial(),
+                        libro.getEdicion());
+            }
+        }
+
+        // Pie de la tabla
+        System.out.println(
+                "------------------------------------------------------------------------------------------------------");
+    }
+
+    void generarTablaRevistas() {
+        // Imprimir la cabecera de la tabla
+        System.out.println(
+                "---------------------------------------------------------------------------------------------");
+        System.out.printf("%-30s %-20s %-8s %-15s %-12s %-25s %-20s %-10s\n",
+                "Titulo", "Autor", "ID", "Año_Pub",
+                "Disp", "ISSN", "Nombre", "Vol");
+        System.out.println(
+                "---------------------------------------------------------------------------------------------");
+
+        for (int i = 0; i < revistas.length; i++) {
+            Revista revista = revistas[i];
+            if (revista != null) {
+                System.out.printf("%-30s %-20s %-8s %-15s %-12s %-25s %-20s %-10s\n",
+                        revista.getTitulo(),
+                        revista.getAutor(),
+                        revista.getID(),
+                        revista.getAnioPublicacion(),
+                        revista.isDisponible(),
+                        revista.getISSN(),
+                        revista.getNombre(),
+                        revista.getVolumen());
+            }
         }
     }
 
