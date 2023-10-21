@@ -95,7 +95,6 @@ public class Documento {
         Documento.ids = ids;
     }
 
-    @Override
     public String toString() {
         return "Informacion del Documento:\n" +
                 "Titulo: " + Titulo + "\n" +
