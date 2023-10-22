@@ -1,3 +1,8 @@
+/**
+ * @author: Cristian Echevarria
+ * @author: Oscar Teran
+ */
+
 package Sistemas_comp.Biblioteca_Java;
 
 public class Estudiante {
