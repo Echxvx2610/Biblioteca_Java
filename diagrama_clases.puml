@@ -2,6 +2,7 @@
 Revista --> Documento
 Libro --> Documento
 Documento --> Biblioteca
+Estudiante --> Biblioteca
 
 title
 Diagrama de Clases Biblioteca

@@ -3,7 +3,6 @@
  * @ author: Oscar A. Teran
  * @ version: 1.0
  */
-
 package Sistemas_comp.Biblioteca_Java;
 
 public class Libro extends Documento {

@@ -62,5 +62,10 @@ Clases:
         ...
         revista[0] =  new Revistas(atributos...)
 
-
-
+Pendientes:
+- Pasar tablas al método verInventario
+- Agregar la condición de que el libro se presta por 7 días y la revista por 3 días
+- Agregar el status de deudor a los estudiantes
+- Generar un submenú para prestamos y devoluciones:
+                - prestar: libro o revista
+                - devolucion: libro o revista

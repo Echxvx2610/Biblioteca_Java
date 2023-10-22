@@ -3,6 +3,9 @@
 * @ author: Oscar Teran
 */
 
+// Pendientes:
+// 1. agregar que los libros se presten por 7 días y las revistas por 3 días
+
 package Sistemas_comp.Biblioteca_Java;
 
 import java.util.GregorianCalendar;
@@ -91,8 +94,8 @@ public class Prestamo {
     public String toString() {
         return "Número de control: " + numeroControl +
                 "\nID del documento: " + idDocumento +
-                "\nFecha de préstamo: " + fechaPrestamo.getTime() +
-                "\nFecha de vencimiento: " + fechaVencimiento.getTime() +
+                "\nFecha de préstamo: " + fechaPrestamo +
+                "\nFecha de vencimiento: " + fechaVencimiento +
                 "\nCon atraso: " + conAtraso;
     }
 }
