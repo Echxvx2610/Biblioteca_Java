@@ -12,6 +12,7 @@
 * - generarTabla() --> sobrecarga(libros,estudiantes,revistas,prestamos)                  [Pendiente]
 * - calculo de fecha vencimiento                                                          [Pendiente]
 * - titulo y alineacion de tablas de datos                                                [Pendiente]
+* - sistema de prestamos                                                                  [Pendiente]
 */
 package proyects.Sistemas.proyectos.Biblioteca_Java;
 
