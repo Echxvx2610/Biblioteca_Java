@@ -3,7 +3,16 @@
  * @ author: Oscar A. Teran
  * @ version: 1.0
  */
-
+// ...::: Pendientes ::::...
+/*
+* - metodos eliminarLibro()-eliminarRevista()-Mediante ID ---> sobrecarga(Libro-Revista)  [Pendiente]
+* - metodos editarLibro() - editarRevista() - Mediante ID --> sobrecarga(Libro-Revista)   [Pendiente]
+* - metodo devoluciones()                                                                 [Pendiente]
+* - metodo deudores()                                                                     [Pendiente]
+* - generarTabla() --> sobrecarga(libros,estudiantes,revistas,prestamos)                  [Pendiente]
+* - calculo de fecha vencimiento                                                          [Pendiente]
+* - titulo y alineacion de tablas de datos                                                [Pendiente]
+*/
 package proyects.Sistemas.proyectos.Biblioteca_Java;
 
 import java.util.ArrayList;
