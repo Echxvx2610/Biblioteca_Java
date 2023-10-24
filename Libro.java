@@ -3,7 +3,7 @@
  * @ author: Oscar A. Teran
  * @ version: 1.0
  */
-package Sistemas_comp.Biblioteca_Java;
+package proyects.Sistemas.proyectos.Biblioteca_Java;
 
 public class Libro extends Documento {
     // Atributos propios de clase hija
@@ -21,9 +21,9 @@ public class Libro extends Documento {
     }
 
     // Construcor con todos los atributos
-    public Libro(String Titulo, String Autor, String ID, int AnioPublicacion, boolean Disponible, String iSBN,
+    public Libro(String titulo, String autor, String ID, int anioPublicacion, boolean disponible, String iSBN,
             String editorial, int edicion) {
-        super(Titulo, Autor, ID, AnioPublicacion, Disponible);
+        super(titulo, autor, ID, anioPublicacion, disponible);
         ISBN = iSBN;
         this.editorial = editorial;
         this.edicion = edicion;
