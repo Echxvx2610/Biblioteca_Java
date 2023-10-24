@@ -6,13 +6,13 @@
 // Pendientes:
 // 1. agregar que los libros se presten por 7 días y las revistas por 3 días
 
-package Sistemas_comp.Biblioteca_Java;
+package proyects.Sistemas.proyectos.Biblioteca_Java;
 
 import java.util.GregorianCalendar;
 
 public class Prestamo {
     // atributos de la clase Prestamo
-    public int id;
+    public String id;
     public String numeroControl;
     public int idDocumento;
     public GregorianCalendar fechaPrestamo;
@@ -21,7 +21,7 @@ public class Prestamo {
 
     // constructor default
     public Prestamo() {
-        this.id = 0;
+        this.id = "0000";
         this.numeroControl = "";
         this.idDocumento = 0;
         this.fechaPrestamo = new GregorianCalendar();
@@ -30,7 +30,7 @@ public class Prestamo {
     }
 
     // constructor con parámetros
-    public Prestamo(int id, String numeroControl, int idDocumento, GregorianCalendar fechaPrestamo,
+    public Prestamo(String id, String numeroControl, int idDocumento, GregorianCalendar fechaPrestamo,
             GregorianCalendar fechaVencimiento, boolean conAtraso) {
         this.id = id;
         this.numeroControl = numeroControl;
@@ -41,11 +41,11 @@ public class Prestamo {
     }
 
     // getter y setter
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
