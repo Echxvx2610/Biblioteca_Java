@@ -4,26 +4,26 @@
  * @ version: 1.0
  */
 
-package Sistemas_comp.Biblioteca_Java;
+package proyects.Sistemas.proyectos.Biblioteca_Java;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class Documento {
     // Atributos superclase
-    String Titulo;
-    String Autor;
+    String titulo;
+    String autor;
     String ID;
-    int AnioPublicacion;
-    boolean Disponible;
+    int anioPublicacion;
+    boolean disponible;
 
     // Constructor default
     public Documento() {
-        this.Titulo = "";
-        this.Autor = "";
+        this.titulo = "";
+        this.autor = "";
         this.ID = "0000";
-        this.AnioPublicacion = 0;
-        this.Disponible = false;
+        this.anioPublicacion = 0;
+        this.disponible = false;
     }
 
     // variable para llevar control de ids
@@ -31,11 +31,11 @@ public class Documento {
 
     public Documento(String Titulo, String Autor, String ID, int AnioPublicacion, boolean Disponible) {
         if (!ids.contains(ID)) {
-            this.Titulo = Titulo;
-            this.Autor = Autor;
+            this.titulo = Titulo;
+            this.autor = Autor;
             this.ID = ID;
-            this.AnioPublicacion = AnioPublicacion;
-            this.Disponible = Disponible;
+            this.anioPublicacion = AnioPublicacion;
+            this.disponible = Disponible;
             // Agregar el ID al conjunto de IDs para evitar duplicados
             ids.add(ID);
         } else {
@@ -48,19 +48,19 @@ public class Documento {
     //
 
     public String getTitulo() {
-        return Titulo;
+        return titulo;
     }
 
     public void setTitulo(String titulo) {
-        Titulo = titulo;
+        titulo = titulo;
     }
 
     public String getAutor() {
-        return Autor;
+        return autor;
     }
 
     public void setAutor(String autor) {
-        Autor = autor;
+        autor = autor;
     }
 
     public String getID() {
@@ -72,19 +72,19 @@ public class Documento {
     }
 
     public int getAnioPublicacion() {
-        return AnioPublicacion;
+        return anioPublicacion;
     }
 
     public void setAnioPublicacion(int anioPublicacion) {
-        AnioPublicacion = anioPublicacion;
+        anioPublicacion = anioPublicacion;
     }
 
     public boolean isDisponible() {
-        return Disponible;
+        return disponible;
     }
 
     public void setDisponible(boolean disponible) {
-        Disponible = disponible;
+        disponible = disponible;
     }
 
     public static Set<String> getIds() {
@@ -97,10 +97,10 @@ public class Documento {
 
     public String toString() {
         return "Informacion del Documento:\n" +
-                "Titulo: " + Titulo + "\n" +
-                "Autor: " + Autor + "\n" +
+                "Titulo: " + titulo + "\n" +
+                "Autor: " + autor + "\n" +
                 "ID: " + ID + "\n" +
-                "Año de publicacion: " + AnioPublicacion + "\n" +
-                "Disponible: " + Disponible + "\n";
+                "Año de publicacion: " + anioPublicacion + "\n" +
+                "Disponible: " + disponible + "\n";
     }
 }
