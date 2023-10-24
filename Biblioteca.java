@@ -13,6 +13,7 @@
 * - calculo de fecha vencimiento                                                          [Pendiente]
 * - titulo y alineacion de tablas de datos                                                [Pendiente]
 * - sistema de prestamos                                                                  [Pendiente]
+* - metodos para crear o registrar libros y revistas                                      [Pendiente]
 */
 package proyects.Sistemas.proyectos.Biblioteca_Java;
 
