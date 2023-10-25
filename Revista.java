@@ -3,7 +3,7 @@
 * @ author: Oscar Teran
 */
 
-package proyects.Sistemas.proyectos.Biblioteca_Java;
+package Sistemas_comp.Biblioteca_Java;
 
 public class Revista extends Documento {
     // atributos propios de la clase

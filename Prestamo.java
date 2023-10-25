@@ -6,7 +6,7 @@
 // Pendientes:
 // 1. agregar que los libros se presten por 7 días y las revistas por 3 días
 
-package proyects.Sistemas.proyectos.Biblioteca_Java;
+package Sistemas_comp.Biblioteca_Java;
 
 import java.util.GregorianCalendar;
 

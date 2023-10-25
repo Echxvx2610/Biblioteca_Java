@@ -3,7 +3,7 @@
  * @ author: Oscar A. Teran
  * @ version: 1.0
  */
-package proyects.Sistemas.proyectos.Biblioteca_Java;
+package Sistemas_comp.Biblioteca_Java;
 
 public class Libro extends Documento {
     // Atributos propios de clase hija

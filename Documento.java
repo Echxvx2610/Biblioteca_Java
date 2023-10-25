@@ -4,7 +4,7 @@
  * @ version: 1.0
  */
 
-package proyects.Sistemas.proyectos.Biblioteca_Java;
+package Sistemas_comp.Biblioteca_Java;
 
 import java.util.HashSet;
 import java.util.Set;
