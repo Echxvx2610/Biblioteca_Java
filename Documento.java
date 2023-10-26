@@ -44,8 +44,7 @@ public class Documento {
             throw new IllegalArgumentException("El ID ya existe.");
         }
     }
-    // Metodos get y set
-    //
+    // getters y setters
 
     public String getTitulo() {
         return titulo;

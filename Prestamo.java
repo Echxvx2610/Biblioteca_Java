@@ -8,13 +8,15 @@
 
 package Sistemas_comp.Biblioteca_Java;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.GregorianCalendar;
 
 public class Prestamo {
     // atributos de la clase Prestamo
     public String id;
     public String numeroControl;
-    public int idDocumento;
+    public String idDocumento;
     public GregorianCalendar fechaPrestamo;
     public GregorianCalendar fechaVencimiento;
     public boolean conAtraso;
@@ -23,24 +25,34 @@ public class Prestamo {
     public Prestamo() {
         this.id = "0000";
         this.numeroControl = "";
-        this.idDocumento = 0;
+        this.idDocumento = "0000";
         this.fechaPrestamo = new GregorianCalendar();
         this.fechaVencimiento = new GregorianCalendar();
         this.conAtraso = false;
     }
 
+    private static Set<String> ids = new HashSet<>();
+
     // constructor con parámetros
-    public Prestamo(String id, String numeroControl, int idDocumento, GregorianCalendar fechaPrestamo,
+    public Prestamo(String id, String numeroControl, String idDocumento, GregorianCalendar fechaPrestamo,
             GregorianCalendar fechaVencimiento, boolean conAtraso) {
-        this.id = id;
-        this.numeroControl = numeroControl;
-        this.idDocumento = idDocumento;
-        this.fechaPrestamo = fechaPrestamo;
-        this.fechaVencimiento = fechaVencimiento;
-        this.conAtraso = conAtraso;
+        if (!ids.contains(id)) {
+            this.id = id;
+            this.numeroControl = numeroControl;
+            this.idDocumento = idDocumento;
+            this.fechaPrestamo = fechaPrestamo;
+            this.fechaVencimiento = fechaVencimiento;
+            this.conAtraso = conAtraso;
+            // Agregar el ID al conjunto de IDs para evitar duplicados
+            ids.add(id);
+        } else {
+            // Si el ID ya existe, puedes manejarlo de la forma que desees, por ejemplo,
+            // lanza una excepción
+            throw new IllegalArgumentException("El ID ya existe.");
+        }
     }
 
-    // getter y setter
+    // getter y setters
     public String getId() {
         return id;
     }
@@ -57,11 +69,11 @@ public class Prestamo {
         this.numeroControl = numeroControl;
     }
 
-    public int getIdDocumento() {
+    public String getIdDocumento() {
         return idDocumento;
     }
 
-    public void setIdDocumento(int idDocumento) {
+    public void setIdDocumento(String idDocumento) {
         this.idDocumento = idDocumento;
     }
 
@@ -87,6 +99,14 @@ public class Prestamo {
 
     public void setConAtraso(boolean conAtraso) {
         this.conAtraso = conAtraso;
+    }
+
+    public static Set<String> getIds() {
+        return ids;
+    }
+
+    public static void setIds(Set<String> ids) {
+        Prestamo.ids = ids;
     }
 
     // método toString

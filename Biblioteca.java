@@ -9,16 +9,17 @@
 * - metodos eliminarLibro()-eliminarRevista()-Mediante ID ---> sobrecarga(Libro-Revista)  [Hecho]
 * - metodos editarLibro() - editarRevista() - Mediante ID --> sobrecarga(Libro-Revista)   [Hecho]
 * - metodo devoluciones()                                                                 [Pendiente]
-* - metodo deudores()                                                                     [Pendiente]
+* - metodo deudores()                                                                     [Hecho]
 * - generarTabla() --> sobrecarga(libros,estudiantes,revistas,prestamos)                  [Pendiente]
-* - calculo de fecha vencimiento                                                          [Pendiente]
-* - titulo y alineacion de tablas de datos                                                [Pendiente]
-* - sistema de prestamos                                                                  [Pendiente]
+* - calculo de fecha vencimiento                                                          [Hecho]
+* - titulo y alineacion de tablas de datos                                                [Hecho]
+* - sistema de prestamos                                                                  [Hecho 50%]
 * - metodos para crear o registrar libros y revistas                                      [Pendiente]
 */
 package Sistemas_comp.Biblioteca_Java;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 import java.text.SimpleDateFormat;
@@ -55,7 +56,9 @@ public class Biblioteca {
                 // control.generarTablaEstudiantes();
                 // control.generarTablaLibros();
                 // control.generarTablaRevistas();
-                control.generarTablaPrestamos();
+                // control.generarTablaPrestamos();
+                control.obtenerFechaActual();
+                control.calcularFechaVencimiento();
                 control.menu();
         }
 
@@ -175,7 +178,34 @@ public class Biblioteca {
                                                 subOpcion = sc.nextInt();
                                                 switch (subOpcion) {
                                                         case 1:
-                                                                // control.prestarLibro();
+                                                                control.generarTablaEstudiantes();
+                                                                control.generarTablaPrestamos();
+                                                                sc.nextLine();
+                                                                // Revisar si el ID del préstamo ya existe
+                                                                System.out.print("Ingresa un ID para el prestamo: ");
+                                                                String id_prestamo = sc.nextLine();
+                                                                boolean existePrestamo = false;
+                                                                for (Prestamo prestamo : prestamos) {
+                                                                        if (prestamo.getId().equals(id_prestamo)) {
+                                                                                existePrestamo = true;
+                                                                                break;
+                                                                        }
+                                                                }
+
+                                                                if (existePrestamo) {
+                                                                        System.out.println(
+                                                                                        "El ID del préstamo ya existe. Por favor, ingrese un ID válido.");
+                                                                        // Aquí puedes agregar el código adicional que
+                                                                        // necesites
+                                                                } else {
+                                                                        System.out.print(
+                                                                                        "Ingresa el Numero de Control del Estudiante: ");
+                                                                        String num_control = sc.nextLine();
+                                                                        System.out.print("Ingresa el ID del Libro: ");
+                                                                        String id_libro = sc.nextLine();
+                                                                        control.prestarLibro(id_prestamo, id_libro,
+                                                                                        num_control);
+                                                                }
                                                                 break;
                                                         case 2:
                                                                 // control.prestarRevista();
@@ -211,26 +241,26 @@ public class Biblioteca {
         void registro() {
                 // registro de array 20 estudiantes
 
-                estudiantes.add(new Estudiante("Cristian", "Echevarria", "Sistemas", "2376005"));
-                estudiantes.add(new Estudiante("Oscar", "Teran", "Administracion", "2376006"));
-                estudiantes.add(new Estudiante("Israel ", "Tejeda", "Administracion", "2376007"));
-                estudiantes.add(new Estudiante("Cristian", "Malacara", "Sistemas", "2376008"));
-                estudiantes.add(new Estudiante("Rosa", "Melano", "Sistemas", "2376009"));
-                estudiantes.add(new Estudiante("Alma", "Marcela", "Sistemas", "2376005"));
-                estudiantes.add(new Estudiante("Elvis", "Cocho", "Gestion", "2376005"));
-                estudiantes.add(new Estudiante("Bad bunny", "Mamberroi", "Sistemas", "2376005"));
-                estudiantes.add(new Estudiante("Luis Miguel", "Ferras", "Sistemas", "2376005"));
-                estudiantes.add(new Estudiante("Felix", "Navarro", "Electronica", "2376005"));
-                estudiantes.add(new Estudiante("Alejandro", "Mendoza", "Sistemas", "2376005"));
-                estudiantes.add(new Estudiante("Oscar", "Ojeda", "Gestion", "2376006"));
-                estudiantes.add(new Estudiante("Gael ", "Olea", "Sistemas", "2376007"));
-                estudiantes.add(new Estudiante("Alonso", "Marquez", "Sistemas", "2376008"));
-                estudiantes.add(new Estudiante("Nestor", "Romero", "Sistemas", "2376009"));
-                estudiantes.add(new Estudiante("Abelardo", "Castro", "Sistemas", "2376005"));
-                estudiantes.add(new Estudiante("Consuelo", "Sanchez", "Sistemas", "2376005"));
-                estudiantes.add(new Estudiante("Alejandra", "Ruiz", "Industrial", "2376005"));
-                estudiantes.add(new Estudiante("Luis", "Zazueta", "Industrial", "2376005"));
-                estudiantes.add(new Estudiante("Raul", "Felix", "Gestion", "2376005"));
+                estudiantes.add(new Estudiante("Cristian", "Echevarria", "Sistemas", "23760055", true));
+                estudiantes.add(new Estudiante("Oscar", "Teran", "Administracion", "23760066", false));
+                estudiantes.add(new Estudiante("Israel ", "Tejeda", "Administracion", "23760077", false));
+                estudiantes.add(new Estudiante("Cristian", "Malacara", "Sistemas", "23760087", false));
+                estudiantes.add(new Estudiante("Rosa", "Melano", "Sistemas", "23760097", false));
+                estudiantes.add(new Estudiante("Alma", "Marcela", "Sistemas", "23760108", false));
+                estudiantes.add(new Estudiante("Elvis", "Cocho", "Gestion", "23760058", false));
+                estudiantes.add(new Estudiante("Bad bunny", "Mamberroi", "Sistemas", "23760011", false));
+                estudiantes.add(new Estudiante("Luis Miguel", "Ferras", "Sistemas", "23760012", false));
+                estudiantes.add(new Estudiante("Felix", "Navarro", "Electronica", "23760013", false));
+                estudiantes.add(new Estudiante("Alejandro", "Mendoza", "Sistemas", "2376014", false));
+                estudiantes.add(new Estudiante("Oscar", "Ojeda", "Gestion", "23760015", false));
+                estudiantes.add(new Estudiante("Gael ", "Olea", "Sistemas", "23760016", false));
+                estudiantes.add(new Estudiante("Alonso", "Marquez", "Sistemas", "23760017", false));
+                estudiantes.add(new Estudiante("Nestor", "Romero", "Sistemas", "23760018", false));
+                estudiantes.add(new Estudiante("Abelardo", "Castro", "Sistemas", "23760019", false));
+                estudiantes.add(new Estudiante("Consuelo", "Sanchez", "Sistemas", "23760020", false));
+                estudiantes.add(new Estudiante("Alejandra", "Ruiz", "Industrial", "23760021", false));
+                estudiantes.add(new Estudiante("Luis", "Zazueta", "Industrial", "23760022", false));
+                estudiantes.add(new Estudiante("Raul", "Felix", "Gestion", "2376023", false));
 
                 // registrar Libros
                 libros.add(new Libro("El retrato de la muerte", "Ray Bradbury", "0001", 1955, true, "434JKLJFAISF7",
@@ -276,26 +306,37 @@ public class Biblioteca {
                                 "Planeta", 3));
 
                 // Registrar Prestamos
-                prestamos.add(new Prestamo("001", "23760067", 1, new GregorianCalendar(2023, 10, 21),
-                                new GregorianCalendar(2023, 10, 28), true));
-                prestamos.add(new Prestamo("002", "23760068", 2, new GregorianCalendar(2023, 10, 21),
-                                new GregorianCalendar(2023, 10, 28), false));
-                prestamos.add(new Prestamo("003", "23760069", 3, new GregorianCalendar(2023, 10, 21),
-                                new GregorianCalendar(2023, 10, 28), true));
-                prestamos.add(new Prestamo("004", "23760070", 4, new GregorianCalendar(2023, 10, 21),
-                                new GregorianCalendar(2023, 10, 28), false));
-                prestamos.add(new Prestamo("005", "23760071", 5, new GregorianCalendar(2023, 10, 21),
-                                new GregorianCalendar(2023, 10, 28), true));
-                prestamos.add(new Prestamo("006", "23760072", 6, new GregorianCalendar(2023, 10, 21),
-                                new GregorianCalendar(2023, 10, 28), true));
-                prestamos.add(new Prestamo("007", "23760073", 7, new GregorianCalendar(2023, 10, 21),
-                                new GregorianCalendar(2023, 10, 28), false));
-                prestamos.add(new Prestamo("006", "23760074", 8, new GregorianCalendar(2023, 10, 21),
-                                new GregorianCalendar(2023, 10, 28), true));
-                prestamos.add(new Prestamo("007", "23760075", 9, new GregorianCalendar(2023, 10, 21),
-                                new GregorianCalendar(2023, 10, 28), false));
-                prestamos.add(new Prestamo("010", "23760076", 10, new GregorianCalendar(2023, 10, 21),
-                                new GregorianCalendar(2023, 10, 28), false));
+                prestamos.add(new Prestamo("0001", "23760055", "0001", new GregorianCalendar(2023, 10, 21),
+                                new GregorianCalendar(2023, 10, 25), false));
+                /*
+                 * prestamos.add(new Prestamo("002", "23760068", "0002", new
+                 * GregorianCalendar(2023, 10, 21),
+                 * new GregorianCalendar(2023, 10, 28), false));
+                 * prestamos.add(new Prestamo("003", "23760069", "0003", new
+                 * GregorianCalendar(2023, 10, 21),
+                 * new GregorianCalendar(2023, 10, 28), true));
+                 * prestamos.add(new Prestamo("004", "23760070", "0004", new
+                 * GregorianCalendar(2023, 10, 21),
+                 * new GregorianCalendar(2023, 10, 28), false));
+                 * prestamos.add(new Prestamo("005", "23760071", "0005", new
+                 * GregorianCalendar(2023, 10, 21),
+                 * new GregorianCalendar(2023, 10, 28), true));
+                 * prestamos.add(new Prestamo("006", "23760072", "0006", new
+                 * GregorianCalendar(2023, 10, 21),
+                 * new GregorianCalendar(2023, 10, 28), true));
+                 * prestamos.add(new Prestamo("007", "23760073", "0007", new
+                 * GregorianCalendar(2023, 10, 21),
+                 * new GregorianCalendar(2023, 10, 28), false));
+                 * prestamos.add(new Prestamo("008", "23760074", "0008", new
+                 * GregorianCalendar(2023, 10, 21),
+                 * new GregorianCalendar(2023, 10, 28), true));
+                 * prestamos.add(new Prestamo("009", "23760075", "0009", new
+                 * GregorianCalendar(2023, 10, 21),
+                 * new GregorianCalendar(2023, 10, 28), false));
+                 * prestamos.add(new Prestamo("0010", "23760076", "0010", new
+                 * GregorianCalendar(2023, 10, 21),
+                 * new GregorianCalendar(2023, 10, 28), false));
+                 */
         }
 
         // metodos generarTabla() aplican para metodo sobrecargado por ejemplo,
@@ -640,7 +681,98 @@ public class Biblioteca {
         }
 
         void deudores() {
-                System.out.println("Listando deudores....");
+                // Imprimir la cabecera de la tabla
+                System.out.println(
+                                "____________________________________________________________________\n");
+                System.out.printf("%-15s %-17s %-20s %-20s\n",
+                                "No. Control", "Nombre", "Apellido", "Carrera");
+                System.out.println(
+                                "__________________________________________________________________________");
+
+                // Recorrer arraylist de estudiantes y muestra estudiantes con atributo deudor =
+                // true
+                for (Estudiante e : estudiantes) {
+                        if (e.isDeudor()) {
+                                System.out.printf("%-15s %-17s %-20s %-20s\n",
+                                                e.getNumeroControl(),
+                                                e.getNombre(),
+                                                e.getApellido(),
+                                                e.getCarrera());
+                        }
+                }
+                // Pie de la tabla
+                System.out.println(
+                                "____________________________________________________________________________");
         }
+
         // logica de la aplicacion....
+        void prestarLibro(String id, String idLibro, String numeroControlEstudiante) {
+                Libro libro = null;
+                Estudiante estudiante = null;
+
+                // Buscamos el libro en nuestro ArrayList
+                for (Libro l : libros) {
+                        if (l.getID().equals(idLibro)) {
+                                libro = l;
+                                break;
+                        }
+                }
+                // Buscamos el estudiante en nuestro ArrayList
+                for (Estudiante e : estudiantes) {
+                        if (e.getNumeroControl().equals(numeroControlEstudiante)) {
+                                estudiante = e;
+                                break;
+                        }
+                }
+                if (libro != null && libro.isDisponible() && estudiante != null) {
+                        // Si el libro esta disponible y existe, se puede prestar
+                        Prestamo prestamo = crearPrestamo(id, numeroControlEstudiante, idLibro);
+                        libro.setDisponible(false);
+                        estudiante.setDeudor(true);
+                        // Agregamos el prestamo a la lista de prestamos
+                        prestamos.add(prestamo);
+                        System.out.println("Libro prestado exitosamente.");
+                } else if (libro != null && !libro.isDisponible()) {
+                        System.out.println("El libro ya se encuentra prestado.");
+                } else if (estudiante == null) {
+                        System.out.println("El estudiante no existe.");
+                } else {
+                        System.out.println("El libro no existe en el inventario.");
+                }
+        }
+
+        Prestamo crearPrestamo(String id, String numeroControlEstudiante, String idLibro) {
+                Prestamo prestamo = new Prestamo();
+                prestamo.setId(id);
+                prestamo.setNumeroControl(numeroControlEstudiante);
+                prestamo.setIdDocumento(idLibro);
+                prestamo.setFechaPrestamo(obtenerFechaActual());
+                prestamo.setFechaVencimiento(calcularFechaVencimiento());
+                return prestamo;
+
+        }
+
+        public GregorianCalendar obtenerFechaActual() {
+                // Obtener la fecha actual
+                Calendar cal = Calendar.getInstance();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                String fechaActualStr = dateFormat.format(cal.getTime());
+
+                // Convertir la fecha actual en formato "yyyy-MM-dd" a un objeto
+                // GregorianCalendar
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+                return new GregorianCalendar(year, month, day);
+        }
+
+        public GregorianCalendar calcularFechaVencimiento() {
+                // Obtener la fecha actual
+                GregorianCalendar fechaActual = obtenerFechaActual();
+
+                // Sumarle 7 días a la fecha actual
+                fechaActual.add(Calendar.DAY_OF_MONTH, 7);
+
+                return fechaActual;
+        }
 }

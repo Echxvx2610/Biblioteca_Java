@@ -11,6 +11,7 @@ public class Estudiante {
     private String apellido;
     private String carrera;
     private String numeroControl;
+    private boolean deudor;
 
     // constructor default
     public Estudiante() {
@@ -18,13 +19,15 @@ public class Estudiante {
         this.apellido = "";
         this.carrera = "";
         this.numeroControl = "";
+        this.deudor = false;
     }
 
-    public Estudiante(String nombre, String apellido, String carrera, String numeroControl) {
+    public Estudiante(String nombre, String apellido, String carrera, String numeroControl, boolean deudor) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.carrera = carrera;
         this.numeroControl = numeroControl;
+        this.deudor = deudor;
     }
 
     // getter y setter
@@ -58,6 +61,14 @@ public class Estudiante {
 
     public void setNumeroControl(String numeroControl) {
         this.numeroControl = numeroControl;
+    }
+
+    public boolean isDeudor() {
+        return deudor;
+    }
+
+    public void setDeudor(boolean deudor) {
+        this.deudor = deudor;
     }
 
     @Override
