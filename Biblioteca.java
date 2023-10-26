@@ -3,10 +3,11 @@
  * @ author: Oscar A. Teran
  * @ version: 1.0
  */
+
 // ...::: Pendientes ::::...
 /*
-* - metodos eliminarLibro()-eliminarRevista()-Mediante ID ---> sobrecarga(Libro-Revista)  [Pendiente]
-* - metodos editarLibro() - editarRevista() - Mediante ID --> sobrecarga(Libro-Revista)   [Pendiente]
+* - metodos eliminarLibro()-eliminarRevista()-Mediante ID ---> sobrecarga(Libro-Revista)  [Hecho]
+* - metodos editarLibro() - editarRevista() - Mediante ID --> sobrecarga(Libro-Revista)   [Hecho]
 * - metodo devoluciones()                                                                 [Pendiente]
 * - metodo deudores()                                                                     [Pendiente]
 * - generarTabla() --> sobrecarga(libros,estudiantes,revistas,prestamos)                  [Pendiente]
@@ -28,7 +29,7 @@ public class Biblioteca {
         Scanner sc = new Scanner(System.in);
         int opcion;
 
-        // Array de Documentos
+        // Arraylist de Documentos
         Documento documentos[] = new Documento[100];
         int cantidadDocumentos = 0;
 
@@ -54,7 +55,7 @@ public class Biblioteca {
                 // control.generarTablaEstudiantes();
                 // control.generarTablaLibros();
                 // control.generarTablaRevistas();
-                // control.generarTablaPrestamos();
+                control.generarTablaPrestamos();
                 control.menu();
         }
 
@@ -210,26 +211,26 @@ public class Biblioteca {
         void registro() {
                 // registro de array 20 estudiantes
 
-                estudiantes.add(new Estudiante("Cristian", "Echevarria", "Sistemas Computacionales", "2376005"));
-                estudiantes.add(new Estudiante("Oscar", "Teran", "Sistemas Computacionales", "2376006"));
-                estudiantes.add(new Estudiante("Israel ", "Tejeda", "Sistemas Computacionales", "2376007"));
-                estudiantes.add(new Estudiante("Cristian", "Malacara", "Sistemas Computacionales", "2376008"));
-                estudiantes.add(new Estudiante("Rosa", "Melano", "Sistemas Computacionales", "2376009"));
-                estudiantes.add(new Estudiante("Alma", "Marcela", "Sistemas Computacionales", "2376005"));
-                estudiantes.add(new Estudiante("Elvis", "Cocho", "Sistemas Computacionales", "2376005"));
-                estudiantes.add(new Estudiante("Bad bunny", "Mamberroi", "Sistemas Computacionales", "2376005"));
-                estudiantes.add(new Estudiante("Luis Miguel", "Ferras", "Sistemas Computacionales", "2376005"));
-                estudiantes.add(new Estudiante("Felix", "Navarro", "Sistemas Computacionales", "2376005"));
-                estudiantes.add(new Estudiante("Alejandro", "Mendoza", "Sistemas Computacionales", "2376005"));
-                estudiantes.add(new Estudiante("Oscar", "Ojeda", "Sistemas Computacionales", "2376006"));
-                estudiantes.add(new Estudiante("Gael ", "Olea", "Sistemas Computacionales", "2376007"));
-                estudiantes.add(new Estudiante("Alonso", "Marquez", "Sistemas Computacionales", "2376008"));
-                estudiantes.add(new Estudiante("Nestor", "Romero", "Sistemas Computacionales", "2376009"));
-                estudiantes.add(new Estudiante("Abelardo", "Castro", "Sistemas Computacionales", "2376005"));
-                estudiantes.add(new Estudiante("Consuelo", "Sanchez", "Sistemas Computacionales", "2376005"));
-                estudiantes.add(new Estudiante("Alejandra", "Ruiz", "Sistemas Computacionales", "2376005"));
-                estudiantes.add(new Estudiante("Luis", "Zazueta", "Sistemas Computacionales", "2376005"));
-                estudiantes.add(new Estudiante("Raul", "Felix", "Sistemas Computacionales", "2376005"));
+                estudiantes.add(new Estudiante("Cristian", "Echevarria", "Sistemas", "2376005"));
+                estudiantes.add(new Estudiante("Oscar", "Teran", "Administracion", "2376006"));
+                estudiantes.add(new Estudiante("Israel ", "Tejeda", "Administracion", "2376007"));
+                estudiantes.add(new Estudiante("Cristian", "Malacara", "Sistemas", "2376008"));
+                estudiantes.add(new Estudiante("Rosa", "Melano", "Sistemas", "2376009"));
+                estudiantes.add(new Estudiante("Alma", "Marcela", "Sistemas", "2376005"));
+                estudiantes.add(new Estudiante("Elvis", "Cocho", "Gestion", "2376005"));
+                estudiantes.add(new Estudiante("Bad bunny", "Mamberroi", "Sistemas", "2376005"));
+                estudiantes.add(new Estudiante("Luis Miguel", "Ferras", "Sistemas", "2376005"));
+                estudiantes.add(new Estudiante("Felix", "Navarro", "Electronica", "2376005"));
+                estudiantes.add(new Estudiante("Alejandro", "Mendoza", "Sistemas", "2376005"));
+                estudiantes.add(new Estudiante("Oscar", "Ojeda", "Gestion", "2376006"));
+                estudiantes.add(new Estudiante("Gael ", "Olea", "Sistemas", "2376007"));
+                estudiantes.add(new Estudiante("Alonso", "Marquez", "Sistemas", "2376008"));
+                estudiantes.add(new Estudiante("Nestor", "Romero", "Sistemas", "2376009"));
+                estudiantes.add(new Estudiante("Abelardo", "Castro", "Sistemas", "2376005"));
+                estudiantes.add(new Estudiante("Consuelo", "Sanchez", "Sistemas", "2376005"));
+                estudiantes.add(new Estudiante("Alejandra", "Ruiz", "Industrial", "2376005"));
+                estudiantes.add(new Estudiante("Luis", "Zazueta", "Industrial", "2376005"));
+                estudiantes.add(new Estudiante("Raul", "Felix", "Gestion", "2376005"));
 
                 // registrar Libros
                 libros.add(new Libro("El retrato de la muerte", "Ray Bradbury", "0001", 1955, true, "434JKLJFAISF7",
@@ -303,36 +304,36 @@ public class Biblioteca {
         void generarTablaEstudiantes() {
                 // Imprimir la cabecera de la tabla
                 System.out.println(
-                                "----------------------------------------------------------------------------------------------");
-                System.out.printf("%-20s %-20s %-30s %-20s\n", "Nombre", "Apellido", "\tCarrera",
-                                "Número de Estudiante");
+                                "____________________________________________________________________\n");
+                System.out.printf("%-15s %-17s %-20s %-20s\n",
+                                "No. Control", "Nombre", "Apellido", "Carrera");
                 System.out.println(
-                                "----------------------------------------------------------------------------------------------");
+                                "__________________________________________________________________________");
 
-                // Iterar a través del array de estudiantes y mostrar la información de cada
+                // Recorrer arraylist de estudiantes y mostrar la información de cada
                 // estudiante
                 for (Estudiante estudiante : estudiantes) {
-                        System.out.printf("%-20s %-20s %-30s %-20s\n",
+                        System.out.printf("%-15s %-17s %-20s %-20s\n",
+                                        estudiante.getNumeroControl(),
                                         estudiante.getNombre(),
                                         estudiante.getApellido(),
-                                        estudiante.getCarrera(),
-                                        estudiante.getNumeroControl());
+                                        estudiante.getCarrera());
                 }
                 // Pie de la tabla
                 System.out.println(
-                                "----------------------------------------------------------------------------------------------\n");
+                                "____________________________________________________________________________");
         }
 
         void generarTablaPrestamos() {
                 // Imprimir la cabecera de la tabla
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 System.out.println(
-                                "----------------------------------------------------------------------------------");
+                                "______________________________________________________________________________________\n");
                 System.out.printf("%-5s %-10s %-13s %-18s %-20s %-10s\n",
                                 "ID", "No_Control", "ID_Documento", "Fecha_Prestamo", "Fecha_Vencimiento",
                                 "Con Atraso");
                 System.out.println(
-                                "----------------------------------------------------------------------------------");
+                                "______________________________________________________________________________________");
 
                 for (Prestamo prestamo : prestamos) {
                         String fechaPrestamoStr = dateFormat.format(prestamo.getFechaPrestamo().getTime());
@@ -347,50 +348,50 @@ public class Biblioteca {
                 }
                 // Pie de la tabla
                 System.out.println(
-                                "------------------------------------------------------------------------------------------------------\n");
+                                "______________________________________________________________________________________");
         }
 
         void generarTablaLibros() {
                 // Imprimir la cabecera de la tabla
                 System.out.println(
-                                "----------------------------------------------------------------------------------------------------------");
-                System.out.printf("%-20s %-20s %-10s %-20s %-10s %-18s %-10s %-5s\n",
-                                "\tTitulo", "Autor", "ID", "Año_Pub",
-                                "Disp", "ISBN", "Editorial", "Edicion");
+                                "_______________________________________________________________________________________________________________________\n");
+                System.out.printf("%-7s %-25s %-20s %-10s %-10s %-20s %-10s %-5s\n",
+                                "ID", "Titulo", "Autor", "Año Pub.",
+                                "Edición", "ISBN", "Editorial", "Disponible");
                 System.out.println(
-                                "-----------------------------------------------------------------------------------------------------------");
+                                "_______________________________________________________________________________________________________________________");
 
                 for (Libro libro : libros) {
-                        System.out.printf("%-25s %-20s %-10s %-20s %-10s %-20s %-10s %-5s\n",
+                        System.out.printf("%-7s %-25s %-20s %-12s %-10s %-20s %-10s %-5s\n",
+                                        libro.getID(),
                                         libro.getTitulo(),
                                         libro.getAutor(),
-                                        libro.getID(),
                                         libro.getAnioPublicacion(),
-                                        libro.isDisponible(),
+                                        libro.getEdicion(),
                                         libro.getISBN(),
                                         libro.getEditorial(),
-                                        libro.getEdicion());
+                                        libro.isDisponible());
                 }
                 // Pie de la tabla
                 System.out.println(
-                                "------------------------------------------------------------------------------------------------------\n");
+                                "_______________________________________________________________________________________________________________________\n");
         }
 
         void generarTablaRevistas() {
                 // Imprimir la cabecera de la tabla
                 System.out.println(
-                                "---------------------------------------------------------------------------------------------");
-                System.out.printf("%-30s %-20s %-8s %-15s %-12s %-25s %-20s %-10s\n",
-                                "Titulo", "Autor", "ID", "Año_Pub",
+                                "________________________________________________________________________________________________________\n");
+                System.out.printf("%-7s %-20s %-15s %-10s %-9s %-20s %-10s %-10s\n",
+                                "ID", "Titulo", "Autor", "Año_Pub",
                                 "Disp", "ISSN", "Nombre", "Vol");
                 System.out.println(
-                                "---------------------------------------------------------------------------------------------");
+                                "________________________________________________________________________________________________________");
 
                 for (Revista revista : revistas) {
-                        System.out.printf("%-30s %-20s %-8s %-15s %-12s %-25s %-20s %-10s\n",
+                        System.out.printf("%-7s %-20s %-15s %-10s %-9s %-20s %-10s %-10s\n",
+                                        revista.getID(),
                                         revista.getTitulo(),
                                         revista.getAutor(),
-                                        revista.getID(),
                                         revista.getAnioPublicacion(),
                                         revista.isDisponible(),
                                         revista.getISSN(),
@@ -399,15 +400,105 @@ public class Biblioteca {
                 }
                 // Pie de la tabla
                 System.out.println(
-                                "------------------------------------------------------------------------------------------------------\n");
+                                "_____________________________________________________________________________________________________\n");
         }
 
         void inventarioLibros() {
                 System.out.println("Listando inventario libros....");
         }
 
-        void editarLibro() {
-                System.out.println("Editanto libros...");
+        public void editarLibro() {
+                sc.nextLine(); // Limpia el salto de línea
+                int opcion;
+
+                do {
+                        System.out.print("Introduce el ID del libro que deseas editar (o 0 para salir): ");
+                        String idLibro = sc.nextLine();
+
+                        if (idLibro.equals("0")) {
+                                break; // Salir del menú de edición
+                        }
+
+                        int indice_libro = -1;
+
+                        // Busca el libro en el ArrayList por su ID
+                        for (int i = 0; i < libros.size(); i++) {
+                                if (libros.get(i).getID().equals(idLibro)) {
+                                        indice_libro = i;
+                                        break;
+                                }
+                        }
+
+                        if (indice_libro != -1) {
+                                Libro libro = libros.get(indice_libro);
+
+                                do {
+                                        System.out.println("Editar Libro (ID: " + idLibro + ")");
+                                        System.out.println("[1] Editar Título");
+                                        System.out.println("[2] Editar Autor");
+                                        System.out.println("[3] Editar Año de publicación");
+                                        System.out.println("[4] Editar ISBN");
+                                        System.out.println("[5] Editar Editorial");
+                                        System.out.println("[6] Editar Edición");
+                                        System.out.println("[7] Volver al menú principal");
+                                        System.out.print("Selecciona una opción: ");
+                                        opcion = sc.nextInt();
+                                        sc.nextLine(); // Limpia el salto de línea
+
+                                        switch (opcion) {
+                                                case 1:
+                                                        System.out.print("Nuevo título: ");
+                                                        String nuevoTitulo = sc.nextLine();
+                                                        libro.setTitulo(nuevoTitulo);
+                                                        System.out.println("Título actualizado.");
+                                                        break;
+                                                case 2:
+                                                        System.out.print("Nuevo autor: ");
+                                                        String nuevoAutor = sc.nextLine();
+                                                        libro.setAutor(nuevoAutor);
+                                                        System.out.println("Autor actualizado.");
+                                                        break;
+                                                case 3:
+                                                        System.out.println("Nuevo año de publicación: ");
+                                                        int nuevoAnioPublicacion = sc.nextInt();
+                                                        libro.setAnioPublicacion(nuevoAnioPublicacion);
+                                                        System.out.println("Año de publicación actualizado.");
+                                                        break;
+                                                case 4:
+                                                        System.out.print("Nuevo ISBN: ");
+                                                        String nuevoISBN = sc.nextLine();
+                                                        libro.setISBN(nuevoISBN);
+                                                        System.out.println("ISBN actualizado.");
+                                                        break;
+                                                case 5:
+                                                        System.out.print("Nueva editorial: ");
+                                                        String nuevaEditorial = sc.nextLine();
+                                                        libro.setEditorial(nuevaEditorial);
+                                                        System.out.println("Editorial actualizada.");
+                                                        break;
+                                                case 6:
+                                                        System.out.print("Nueva edición: ");
+                                                        int nuevaEdicion = sc.nextInt();
+                                                        libro.setEdicion(nuevaEdicion);
+                                                        System.out.println("Edición actualizada.");
+                                                        break;
+                                                case 7:
+                                                        // Salir del submenú
+                                                        break;
+                                                default:
+                                                        System.out.println("Opción no válida. Inténtalo de nuevo.");
+                                                        break;
+                                        }
+                                } while (opcion != 7);
+
+                                // Actualiza el objeto en el ArrayList
+                                libros.set(indice_libro, libro);
+
+                                System.out.println("Libro actualizado en el inventario.");
+                        } else {
+                                System.out.println("El libro con ID " + idLibro + " no existe en el inventario.");
+                        }
+                } while (true);
         }
 
         void eliminarLibro() {
@@ -426,12 +517,114 @@ public class Biblioteca {
                 System.out.println("No se encontró ningún libro con el ID especificado.");
         }
 
-        void editarRevista() {
-                System.out.println("Editando revistas....");
+        public void editarRevista() {
+                sc.nextLine(); // Limpia el salto de línea
+                int opcion;
+
+                do {
+                        System.out.print("Introduce el ID de la revista que deseas editar (o 0 para salir): ");
+                        String idRevista = sc.nextLine();
+
+                        if (idRevista.equals("0")) {
+                                break; // Salir del menú de edición
+                        }
+
+                        int indice_revista = -1;
+
+                        // Busca el libro en el ArrayList por su ID
+                        for (int i = 0; i < revistas.size(); i++) {
+                                if (revistass.get(i).getID().equals(idRevista)) {
+                                        indice_revista = i;
+                                        break;
+                                }
+                        }
+
+                        if (indice_revista != -1) {
+                                Revista revista = revistas.get(indice_revista);
+
+                                do {
+                                        System.out.println("Editar Revista (ID: " + idRevista + ")");
+                                        System.out.println("[1] Editar Título");
+                                        System.out.println("[2] Editar Autor");
+                                        System.out.println("[3] Editar Año de publicación");
+                                        System.out.println("[4] Editar ISSN");
+                                        System.out.println("[5] Editar Nombre");
+                                        System.out.println("[6] Editar Volumen");
+                                        System.out.println("[7] Volver al menú principal");
+                                        System.out.print("Selecciona una opción: ");
+                                        opcion = sc.nextInt();
+                                        sc.nextLine(); // Limpia el salto de línea
+
+                                        switch (opcion) {
+                                                case 1:
+                                                        System.out.print("Nuevo título: ");
+                                                        String nuevoTitulo = sc.nextLine();
+                                                        revista.setTitulo(nuevoTitulo);
+                                                        System.out.println("Título actualizado.");
+                                                        break;
+                                                case 2:
+                                                        System.out.print("Nuevo autor: ");
+                                                        String nuevoAutor = sc.nextLine();
+                                                        revista.setAutor(nuevoAutor);
+                                                        System.out.println("Autor actualizado.");
+                                                        break;
+                                                case 3:
+                                                        System.out.println("Nuevo año de publicación: ");
+                                                        int nuevoAnioPublicacion = sc.nextInt();
+                                                        revista.setAnioPublicacion(nuevoAnioPublicacion);
+                                                        System.out.println("Año de publicación actualizado.");
+                                                        break;
+                                                case 4:
+                                                        System.out.print("Nuevo ISSN: ");
+                                                        String nuevoISSN = sc.nextLine();
+                                                        revista.setISSN(nuevoISSN);
+                                                        System.out.println("ISBN actualizado.");
+                                                        break;
+                                                case 5:
+                                                        System.out.print("Nueva Nombre: ");
+                                                        String nuevoNombre = sc.nextLine();
+                                                        revista.setNombre(nuevoNombre);
+                                                        System.out.println("Editorial actualizada.");
+                                                        break;
+                                                case 6:
+                                                        System.out.print("Nueva Volumen: ");
+                                                        int nuevoVolumen = sc.nextInt();
+                                                        revista.setVolumen(nuevoVolumen);
+                                                        System.out.println("Edición actualizada.");
+                                                        break;
+                                                case 7:
+                                                        // Salir del submenú
+                                                        break;
+                                                default:
+                                                        System.out.println("Opción no válida. Inténtalo de nuevo.");
+                                                        break;
+                                        }
+                                } while (opcion != 7);
+
+                                // Actualiza el objeto en el ArrayList
+                                revistas.set(indice_revista, revista);
+
+                                System.out.println("Revista actualizada en el inventario.");
+                        } else {
+                                System.out.println("La revista con ID " + idRevista + " no existe en el inventario.");
+                        }
+                } while (true);
         }
 
         void eliminarRevista() {
-                System.out.println("Eliminando revistas....");
+                // Eliminar revista por ID de revista
+                // limpiar buffer
+                sc.nextLine();
+                System.out.println("Ingrese el ID de la revista a eliminar: ");
+                String id = sc.nextLine();
+                for (int i = 0; i < revistas.size(); i++) {
+                        if (revistas.get(i).getID().equals(id)) {
+                                revistas.remove(i);
+                                System.out.println("Revista eliminada correctamente.");
+                                return;
+                        }
+                }
+                System.out.println("No se encontro ninguna revista con el ID especificado.");
         }
 
         void inventarioRevistas() {

@@ -52,7 +52,7 @@ public class Documento {
     }
 
     public void setTitulo(String titulo) {
-        titulo = titulo;
+        this.titulo = titulo;
     }
 
     public String getAutor() {
@@ -60,7 +60,7 @@ public class Documento {
     }
 
     public void setAutor(String autor) {
-        autor = autor;
+        this.autor = autor;
     }
 
     public String getID() {
@@ -68,7 +68,7 @@ public class Documento {
     }
 
     public void setID(String iD) {
-        ID = iD;
+        this.ID = iD;
     }
 
     public int getAnioPublicacion() {
@@ -76,7 +76,7 @@ public class Documento {
     }
 
     public void setAnioPublicacion(int anioPublicacion) {
-        anioPublicacion = anioPublicacion;
+        this.anioPublicacion = anioPublicacion;
     }
 
     public boolean isDisponible() {
@@ -84,7 +84,7 @@ public class Documento {
     }
 
     public void setDisponible(boolean disponible) {
-        disponible = disponible;
+        this.disponible = disponible;
     }
 
     public static Set<String> getIds() {
