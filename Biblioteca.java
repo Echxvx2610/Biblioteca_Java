@@ -117,9 +117,10 @@ public class Biblioteca {
                                                                                 case 4:
                                                                                         break;
                                                                                 default:
-                                                                                        System.out.println("La opcion "
-                                                                                                        + opcionLibro
-                                                                                                        + " no es valida");
+                                                                                        System.out.println(
+                                                                                                        "[SISTEMA] La opcion "
+                                                                                                                        + opcionLibro
+                                                                                                                        + " no es valida");
                                                                         }
                                                                 } while (opcionLibro != 4);
                                                                 break;
@@ -151,16 +152,17 @@ public class Biblioteca {
                                                                                 case 4:
                                                                                         break;
                                                                                 default:
-                                                                                        System.out.println("La opción "
-                                                                                                        + opcionRevista
-                                                                                                        + " no es valida");
+                                                                                        System.out.println(
+                                                                                                        "[SISTEMA] La opción "
+                                                                                                                        + opcionRevista
+                                                                                                                        + " no es valida");
                                                                         }
                                                                 } while (opcionRevista != 4);
                                                                 break;
                                                         case 3:
                                                                 break;
                                                         default:
-                                                                System.out.println("La opcion " + invOpcion
+                                                                System.out.println("[SISTEMA] La opcion " + invOpcion
                                                                                 + " no es valida");
                                                 }
                                         } while (invOpcion != 3);
@@ -183,10 +185,10 @@ public class Biblioteca {
                                                                 sc.nextLine();
                                                                 // Revisar si el ID del préstamo ya existe
                                                                 System.out.print("Ingresa un ID para el prestamo: ");
-                                                                String id_prestamo = sc.nextLine();
+                                                                String id_prestamoLibro = sc.nextLine();
                                                                 boolean existePrestamo = false;
                                                                 for (Prestamo prestamo : prestamos) {
-                                                                        if (prestamo.getId().equals(id_prestamo)) {
+                                                                        if (prestamo.getId().equals(id_prestamoLibro)) {
                                                                                 existePrestamo = true;
                                                                                 break;
                                                                         }
@@ -194,7 +196,7 @@ public class Biblioteca {
 
                                                                 if (existePrestamo) {
                                                                         System.out.println(
-                                                                                        "El ID del préstamo ya existe. Por favor, ingrese un ID válido.");
+                                                                                        "[SISTEMA] El ID del préstamo ya existe. Por favor, ingrese un ID válido.");
                                                                         // Aquí puedes agregar el código adicional que
                                                                         // necesites
                                                                 } else {
@@ -203,12 +205,44 @@ public class Biblioteca {
                                                                         String num_control = sc.nextLine();
                                                                         System.out.print("Ingresa el ID del Libro: ");
                                                                         String id_libro = sc.nextLine();
-                                                                        control.prestarLibro(id_prestamo, id_libro,
+                                                                        control.prestarLibro(id_prestamoLibro, id_libro,
                                                                                         num_control);
                                                                 }
                                                                 break;
                                                         case 2:
-                                                                // control.prestarRevista();
+                                                                control.generarTablaEstudiantes();
+                                                                control.generarTablaPrestamos();
+                                                                sc.nextLine();
+                                                                // Revisar si el ID del préstamo ya existe
+                                                                System.out.print("Ingresa un ID para el prestamo: ");
+                                                                String id_prestamoRevista = sc.nextLine();
+                                                                boolean existePrestamo2 = false;
+
+                                                                // Ciclo for para settearla variable existePrestamo a
+                                                                // true
+                                                                for (Prestamo prestamo : prestamos) {
+                                                                        if (prestamo.getId()
+                                                                                        .equals(id_prestamoRevista)) {
+                                                                                existePrestamo2 = true;
+                                                                                break;
+                                                                        }
+                                                                }
+                                                                if (existePrestamo2) {
+                                                                        System.out.println(
+                                                                                        "[SISTEMA] El ID del préstamo ya existe. Por favor, ingrese un ID válido.");
+                                                                        // Aquí puedes agregar el código adicional que
+                                                                        // necesites
+                                                                } else {
+                                                                        System.out.print(
+                                                                                        "Ingresa el Numero de Control del Estudiante: ");
+                                                                        String num_control = sc.nextLine();
+                                                                        System.out.print(
+                                                                                        "Ingresa el ID de la revista: ");
+                                                                        String id_revista = sc.nextLine();
+                                                                        control.prestarRevista(id_prestamoRevista,
+                                                                                        id_revista,
+                                                                                        num_control);
+                                                                }
                                                                 break;
                                                         case 3:
                                                                 // control.verPrestamos();
@@ -217,22 +251,22 @@ public class Biblioteca {
                                                         case 4:
                                                                 break;
                                                         default:
-                                                                System.out.println("La opcion " + subOpcion
+                                                                System.out.println("[SISTEMA] La opcion " + subOpcion
                                                                                 + " no valida");
                                                 }
                                         } while (subOpcion != 4);
                                         break;
                                 case 3: // llamar al método devoluciones
-                                        control.devoluciones();
+                                        // control.devoluciones();
                                         break;
                                 case 4: // llamar al método Deudores
                                         control.deudores();
                                         break;
                                 case 5:
-                                        System.out.println("Saliendo del programa...");
+                                        System.out.println("[SISTEMA] Saliendo del programa...");
                                         System.exit(0);
                                 default: // cualquier otra opción no es válida
-                                        System.out.println("La opción " + opcion + " no es válida");
+                                        System.out.println("[SISTEMA] La opción " + opcion + " no es válida");
                         } // fin del swith menú
                 } while (opcion != 5);
         }
@@ -307,7 +341,7 @@ public class Biblioteca {
 
                 // Registrar Prestamos
                 prestamos.add(new Prestamo("0001", "23760055", "0001", new GregorianCalendar(2023, 10, 21),
-                                new GregorianCalendar(2023, 10, 25), false));
+                                new GregorianCalendar(2023, 9, 28), false));
                 /*
                  * prestamos.add(new Prestamo("002", "23760068", "0002", new
                  * GregorianCalendar(2023, 10, 21),
@@ -396,7 +430,7 @@ public class Biblioteca {
                 // Imprimir la cabecera de la tabla
                 System.out.println(
                                 "_______________________________________________________________________________________________________________________\n");
-                System.out.printf("%-7s %-25s %-20s %-10s %-10s %-20s %-10s %-5s\n",
+                System.out.printf("%-7s %-25s %-20s %-10s %-12s %-20s %-10s %-5s\n",
                                 "ID", "Titulo", "Autor", "Año Pub.",
                                 "Edición", "ISBN", "Editorial", "Disponible");
                 System.out.println(
@@ -445,7 +479,7 @@ public class Biblioteca {
         }
 
         void inventarioLibros() {
-                System.out.println("Listando inventario libros....");
+                System.out.println("[SISTEMA] Listando inventario libros....");
         }
 
         public void editarLibro() {
@@ -489,45 +523,40 @@ public class Biblioteca {
                                         switch (opcion) {
                                                 case 1:
                                                         System.out.print("Nuevo título: ");
-                                                        String nuevoTitulo = sc.nextLine();
-                                                        libro.setTitulo(nuevoTitulo);
-                                                        System.out.println("Título actualizado.");
+                                                        libro.setTitulo(sc.nextLine());
+                                                        System.out.println("[SISTEMA] Título actualizado.");
                                                         break;
                                                 case 2:
                                                         System.out.print("Nuevo autor: ");
-                                                        String nuevoAutor = sc.nextLine();
-                                                        libro.setAutor(nuevoAutor);
-                                                        System.out.println("Autor actualizado.");
+                                                        libro.setAutor(sc.nextLine());
+                                                        System.out.println("[SISTEMA] Autor actualizado.");
                                                         break;
                                                 case 3:
                                                         System.out.println("Nuevo año de publicación: ");
-                                                        int nuevoAnioPublicacion = sc.nextInt();
-                                                        libro.setAnioPublicacion(nuevoAnioPublicacion);
-                                                        System.out.println("Año de publicación actualizado.");
+                                                        libro.setAnioPublicacion(sc.nextLine());
+                                                        System.out.println("[SISTEMA] Año de publicación actualizado.");
                                                         break;
                                                 case 4:
                                                         System.out.print("Nuevo ISBN: ");
-                                                        String nuevoISBN = sc.nextLine();
-                                                        libro.setISBN(nuevoISBN);
-                                                        System.out.println("ISBN actualizado.");
+                                                        libro.setISBN(sc.nextLine());
+                                                        System.out.println("[SISTEMA] ISBN actualizado.");
                                                         break;
                                                 case 5:
                                                         System.out.print("Nueva editorial: ");
-                                                        String nuevaEditorial = sc.nextLine();
-                                                        libro.setEditorial(nuevaEditorial);
-                                                        System.out.println("Editorial actualizada.");
+                                                        libro.setEditorial(sc.nextLine());
+                                                        System.out.println("[SISTEMA] Editorial actualizada.");
                                                         break;
                                                 case 6:
                                                         System.out.print("Nueva edición: ");
-                                                        int nuevaEdicion = sc.nextInt();
-                                                        libro.setEdicion(nuevaEdicion);
-                                                        System.out.println("Edición actualizada.");
+                                                        libro.setEdicion(sc.nextLine());
+                                                        System.out.println("[SISTEMA] Edición actualizada.");
                                                         break;
                                                 case 7:
                                                         // Salir del submenú
                                                         break;
                                                 default:
-                                                        System.out.println("Opción no válida. Inténtalo de nuevo.");
+                                                        System.out.println(
+                                                                        "[SISTEMA] Opción no válida. Inténtalo de nuevo.");
                                                         break;
                                         }
                                 } while (opcion != 7);
@@ -535,9 +564,10 @@ public class Biblioteca {
                                 // Actualiza el objeto en el ArrayList
                                 libros.set(indice_libro, libro);
 
-                                System.out.println("Libro actualizado en el inventario.");
+                                System.out.println("[SISTEMA] Libro actualizado en el inventario.");
                         } else {
-                                System.out.println("El libro con ID " + idLibro + " no existe en el inventario.");
+                                System.out.println("[SISTEMA] El libro con ID " + idLibro
+                                                + " no existe en el inventario.");
                         }
                 } while (true);
         }
@@ -551,11 +581,11 @@ public class Biblioteca {
                 for (int i = 0; i < libros.size(); i++) {
                         if (libros.get(i).getID().equals(id)) {
                                 libros.remove(i);
-                                System.out.println("Libro eliminado correctamente.");
+                                System.out.println("[SISTEMA] Libro eliminado correctamente.");
                                 return;
                         }
                 }
-                System.out.println("No se encontró ningún libro con el ID especificado.");
+                System.out.println("[SISTEMA] No se encontró ningún libro con el ID especificado.");
         }
 
         public void editarRevista() {
@@ -599,45 +629,41 @@ public class Biblioteca {
                                         switch (opcion) {
                                                 case 1:
                                                         System.out.print("Nuevo título: ");
-                                                        String nuevoTitulo = sc.nextLine();
-                                                        revista.setTitulo(nuevoTitulo);
-                                                        System.out.println("Título actualizado.");
+                                                        revista.setTitulo(sc.nextLine());
+                                                        System.out.println("[SISTEMA] Titulo actualizado.");
                                                         break;
                                                 case 2:
                                                         System.out.print("Nuevo autor: ");
-                                                        String nuevoAutor = sc.nextLine();
-                                                        revista.setAutor(nuevoAutor);
-                                                        System.out.println("Autor actualizado.");
+                                                        revista.setAutor(sc.nextLine());
+                                                        System.out.println("[SISTEMA] Autor actualizado.");
                                                         break;
                                                 case 3:
                                                         System.out.println("Nuevo año de publicación: ");
-                                                        int nuevoAnioPublicacion = sc.nextInt();
-                                                        revista.setAnioPublicacion(nuevoAnioPublicacion);
-                                                        System.out.println("Año de publicación actualizado.");
+                                                        revista.setAnioPublicacion(sc.nextLine());
+                                                        System.out.println("[SISTEMA] Año de publicación actualizado.");
                                                         break;
                                                 case 4:
                                                         System.out.print("Nuevo ISSN: ");
                                                         String nuevoISSN = sc.nextLine();
-                                                        revista.setISSN(nuevoISSN);
-                                                        System.out.println("ISBN actualizado.");
+                                                        revista.setISSN(sc.nextLine());
+                                                        System.out.println("[SISTEMA] ISBN actualizado.");
                                                         break;
                                                 case 5:
-                                                        System.out.print("Nueva Nombre: ");
-                                                        String nuevoNombre = sc.nextLine();
-                                                        revista.setNombre(nuevoNombre);
-                                                        System.out.println("Editorial actualizada.");
+                                                        System.out.print("Nuevo Nombre: ");
+                                                        revista.setNombre(sc.nextLine());
+                                                        System.out.println("[SISTEMA] Editorial actualizada.");
                                                         break;
                                                 case 6:
                                                         System.out.print("Nueva Volumen: ");
-                                                        int nuevoVolumen = sc.nextInt();
-                                                        revista.setVolumen(nuevoVolumen);
-                                                        System.out.println("Edición actualizada.");
+                                                        revista.setVolumen(sc.nextLine());
+                                                        System.out.println("[SISTEMA] Edición actualizada.");
                                                         break;
                                                 case 7:
                                                         // Salir del submenú
                                                         break;
                                                 default:
-                                                        System.out.println("Opción no válida. Inténtalo de nuevo.");
+                                                        System.out.println(
+                                                                        "[SISTEMA] Opción no válida. Inténtalo de nuevo.");
                                                         break;
                                         }
                                 } while (opcion != 7);
@@ -645,9 +671,10 @@ public class Biblioteca {
                                 // Actualiza el objeto en el ArrayList
                                 revistas.set(indice_revista, revista);
 
-                                System.out.println("Revista actualizada en el inventario.");
+                                System.out.println("[SISTEMA] Revista actualizada en el inventario.");
                         } else {
-                                System.out.println("La revista con ID " + idRevista + " no existe en el inventario.");
+                                System.out.println("[SISTEMA] La revista con ID " + idRevista
+                                                + " no existe en el inventario.");
                         }
                 } while (true);
         }
@@ -661,23 +688,70 @@ public class Biblioteca {
                 for (int i = 0; i < revistas.size(); i++) {
                         if (revistas.get(i).getID().equals(id)) {
                                 revistas.remove(i);
-                                System.out.println("Revista eliminada correctamente.");
+                                System.out.println("[SISTEMA] Revista eliminada correctamente.");
                                 return;
                         }
                 }
-                System.out.println("No se encontro ninguna revista con el ID especificado.");
+                System.out.println("[SISTEMA] No se encontro ninguna revista con el ID especificado.");
         }
 
         void inventarioRevistas() {
-                System.out.println("Listando inventario revistas....");
+                System.out.println("[SISTEMA] Listando inventario revistas....");
         }
 
         void verPrestamos() {
-                System.out.println("Listando prestamos....");
+                System.out.println("[SISTEMA] Listando prestamos....");
         }
 
-        void devoluciones() {
-                System.out.println("Realizando devoluciones....");
+        void devoluciones(String id_prestamo) {
+                Prestamo prestamo = null;
+                Libro libro = null;
+                Estudiante estudiante = null;
+
+                // buscamos el pretamos por el ID
+                for (Prestamo p : prestamos) {
+                        if (p.getID().equals(id_prestamo)) {
+                                prestamo = p;
+                                break;
+                        }
+                }
+
+                // Buscamos el libro referente al prestamo
+                if (prestamo != null) {
+                        for (Libro l : libros) {
+                                if (l.getID().equals(prestamo.getIdDocumento())) {
+                                        libro = l;
+                                        break;
+                                }
+                        }
+                }
+
+                // Buscamos el estudiante referente al prestamo
+                if (prestamo != null) {
+                        for (Estudiante e : estudiantes) {
+                                if (e.getNumeroControl().equals(prestamo.getNumeroControlEstudiante())) {
+                                        estudiante = e;
+                                        break;
+                                }
+                        }
+                }
+
+                if (libro != null && estudiante != null) {
+                        // cambiamos el estado del libro a disponible
+                        libro.setDisponible(true);
+
+                        // cambiamos el estado del libro como no deudor
+                        estudiante.isDeudor(false);
+
+                        // eliminamos el prestamo de la lista de prestamos
+                        prestamo.remove(prestamo);
+
+                        System.out.println("[SISTEMA] Devolucion Exitosa.");
+                } else if (libro == null || estudiante == null) {
+                        System.out.println("[SISTEMA] No se encontro nigun libro o estudiante asociado al prestamo.");
+                } else {
+                        System.out.println("[SISTEMA] No se encontro un prestamo con el ID ingresado.");
+                }
         }
 
         void deudores() {
@@ -731,13 +805,50 @@ public class Biblioteca {
                         estudiante.setDeudor(true);
                         // Agregamos el prestamo a la lista de prestamos
                         prestamos.add(prestamo);
-                        System.out.println("Libro prestado exitosamente.");
+                        System.out.println("[SISTEMA] Libro prestado exitosamente.");
                 } else if (libro != null && !libro.isDisponible()) {
-                        System.out.println("El libro ya se encuentra prestado.");
+                        System.out.println("[SISTEMA] El libro ya se encuentra prestado.");
                 } else if (estudiante == null) {
-                        System.out.println("El estudiante no existe.");
+                        System.out.println("[SISTEMA] El estudiante no existe.");
                 } else {
-                        System.out.println("El libro no existe en el inventario.");
+                        System.out.println("[SISTEMA] El libro no existe en el inventario.");
+                }
+        }
+
+        // prestar (metodo que englobe prestar revistas y libros)
+
+        void prestarRevista(String id, String idRevista, String numeroControlEstudiante) {
+                Revista revista = null;
+                Estudiante estudiante = null;
+
+                // Buscamos la revista en nuestro ArrayList
+                for (Revista l : revistas) {
+                        if (l.getID().equals(idRevista)) {
+                                revista = l;
+                                break;
+                        }
+                }
+                // Buscamos el estudiante en nuestro ArrayList
+                for (Estudiante e : estudiantes) {
+                        if (e.getNumeroControl().equals(numeroControlEstudiante)) {
+                                estudiante = e;
+                                break;
+                        }
+                }
+                if (revista != null && revista.isDisponible() && estudiante != null) {
+                        // Si la revista esta disponible y existe, se puede prestar
+                        Prestamo prestamo = crearPrestamo(id, numeroControlEstudiante, idRevista);
+                        revista.setDisponible(false);
+                        estudiante.setDeudor(true);
+                        // Agregamos el prestamo a la lista de prestamos
+                        prestamos.add(prestamo);
+                        System.out.println("[SISTEMA] Revista prestada exitosamente.");
+                } else if (revista != null && !revista.isDisponible()) {
+                        System.out.println("[SISTEMA] La revista ya se encuentra prestado.");
+                } else if (estudiante == null) {
+                        System.out.println("[SISTEMA] El estudiante no existe.");
+                } else {
+                        System.out.println("[SISTEMA] La revista no existe en el inventario.");
                 }
         }
 
@@ -756,23 +867,21 @@ public class Biblioteca {
                 // Obtener la fecha actual
                 Calendar cal = Calendar.getInstance();
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                String fechaActualStr = dateFormat.format(cal.getTime());
+                // String fechaActualStr = dateFormat.format(cal.getTime());
 
                 // Convertir la fecha actual en formato "yyyy-MM-dd" a un objeto
                 // GregorianCalendar
                 int year = cal.get(Calendar.YEAR);
                 int month = cal.get(Calendar.MONTH);
                 int day = cal.get(Calendar.DAY_OF_MONTH);
-                return new GregorianCalendar(year, month, day);
+                return new GregorianCalendar(year, (month - 1), day);
         }
 
         public GregorianCalendar calcularFechaVencimiento() {
                 // Obtener la fecha actual
                 GregorianCalendar fechaActual = obtenerFechaActual();
-
                 // Sumarle 7 días a la fecha actual
                 fechaActual.add(Calendar.DAY_OF_MONTH, 7);
-
                 return fechaActual;
         }
 }
