@@ -15,6 +15,9 @@
 * - titulo y alineacion de tablas de datos                                                [Hecho]
 * - sistema de prestamos                                                                  [Hecho 50%]
 * - metodos para crear o registrar libros y revistas                                      [Pendiente]
+* - debugear y corregir error en la devolución de revistas                                [Pendiente]
+* - revisar el método registro todo OK en                                                 [Pendiente]
+* - descomentar los prestamos                                                             [Pendiente]      
 */
 package Sistemas_comp.Biblioteca_Java;
 
@@ -257,7 +260,10 @@ public class Biblioteca {
                                         } while (subOpcion != 4);
                                         break;
                                 case 3: // llamar al método devoluciones
-                                        // control.devoluciones();
+                                        control.generarTablaPrestamos();
+                                        sc.nextLine(); // limpiar buffer
+                                        System.out.println("Ingrese el ID del Prestamo a regresar: ");
+                                        control.devoluciones(sc.nextLine()); // llamar al método devoluciones
                                         break;
                                 case 4: // llamar al método Deudores
                                         control.deudores();
@@ -524,32 +530,34 @@ public class Biblioteca {
                                                 case 1:
                                                         System.out.print("Nuevo título: ");
                                                         libro.setTitulo(sc.nextLine());
-                                                        System.out.println("[SISTEMA] Título actualizado.");
+                                                        System.out.println("[SISTEMA] Título actualizado con éxito.");
                                                         break;
                                                 case 2:
                                                         System.out.print("Nuevo autor: ");
                                                         libro.setAutor(sc.nextLine());
-                                                        System.out.println("[SISTEMA] Autor actualizado.");
+                                                        System.out.println("[SISTEMA] Autor actualizado con éxito.");
                                                         break;
                                                 case 3:
                                                         System.out.println("Nuevo año de publicación: ");
-                                                        libro.setAnioPublicacion(sc.nextLine());
-                                                        System.out.println("[SISTEMA] Año de publicación actualizado.");
+                                                        libro.setAnioPublicacion(sc.nextInt());
+                                                        System.out.println(
+                                                                        "[SISTEMA] Año de publicación actualizado con éxito.");
                                                         break;
                                                 case 4:
                                                         System.out.print("Nuevo ISBN: ");
                                                         libro.setISBN(sc.nextLine());
-                                                        System.out.println("[SISTEMA] ISBN actualizado.");
+                                                        System.out.println("[SISTEMA] ISBN actualizado con éxito.");
                                                         break;
                                                 case 5:
                                                         System.out.print("Nueva editorial: ");
                                                         libro.setEditorial(sc.nextLine());
-                                                        System.out.println("[SISTEMA] Editorial actualizada.");
+                                                        System.out.println(
+                                                                        "[SISTEMA] Editorial actualizada con éxito.");
                                                         break;
                                                 case 6:
                                                         System.out.print("Nueva edición: ");
-                                                        libro.setEdicion(sc.nextLine());
-                                                        System.out.println("[SISTEMA] Edición actualizada.");
+                                                        libro.setEdicion(sc.nextInt());
+                                                        System.out.println("[SISTEMA] Edición actualizada con éxito.");
                                                         break;
                                                 case 7:
                                                         // Salir del submenú
@@ -604,7 +612,7 @@ public class Biblioteca {
 
                         // Busca el libro en el ArrayList por su ID
                         for (int i = 0; i < revistas.size(); i++) {
-                                if (revistass.get(i).getID().equals(idRevista)) {
+                                if (revistas.get(i).getID().equals(idRevista)) {
                                         indice_revista = i;
                                         break;
                                 }
@@ -630,33 +638,35 @@ public class Biblioteca {
                                                 case 1:
                                                         System.out.print("Nuevo título: ");
                                                         revista.setTitulo(sc.nextLine());
-                                                        System.out.println("[SISTEMA] Titulo actualizado.");
+                                                        System.out.println("[SISTEMA] Titulo actualizado con éxito.");
                                                         break;
                                                 case 2:
                                                         System.out.print("Nuevo autor: ");
                                                         revista.setAutor(sc.nextLine());
-                                                        System.out.println("[SISTEMA] Autor actualizado.");
+                                                        System.out.println("[SISTEMA] Autor actualizado con éxito.");
                                                         break;
                                                 case 3:
                                                         System.out.println("Nuevo año de publicación: ");
-                                                        revista.setAnioPublicacion(sc.nextLine());
-                                                        System.out.println("[SISTEMA] Año de publicación actualizado.");
+                                                        revista.setAnioPublicacion(sc.nextInt());
+                                                        System.out.println(
+                                                                        "[SISTEMA] Año de publicación actualizado con éxito.");
                                                         break;
                                                 case 4:
                                                         System.out.print("Nuevo ISSN: ");
                                                         String nuevoISSN = sc.nextLine();
                                                         revista.setISSN(sc.nextLine());
-                                                        System.out.println("[SISTEMA] ISBN actualizado.");
+                                                        System.out.println("[SISTEMA] ISBN actualizado con éxito.");
                                                         break;
                                                 case 5:
                                                         System.out.print("Nuevo Nombre: ");
                                                         revista.setNombre(sc.nextLine());
-                                                        System.out.println("[SISTEMA] Editorial actualizada.");
+                                                        System.out.println(
+                                                                        "[SISTEMA] Editorial actualizada con éxito.");
                                                         break;
                                                 case 6:
                                                         System.out.print("Nueva Volumen: ");
-                                                        revista.setVolumen(sc.nextLine());
-                                                        System.out.println("[SISTEMA] Edición actualizada.");
+                                                        revista.setVolumen(sc.nextInt());
+                                                        System.out.println("[SISTEMA] Edición actualizada con éxito.");
                                                         break;
                                                 case 7:
                                                         // Salir del submenú
@@ -708,9 +718,9 @@ public class Biblioteca {
                 Libro libro = null;
                 Estudiante estudiante = null;
 
-                // buscamos el pretamos por el ID
+                // buscamos el prestamo por el ID
                 for (Prestamo p : prestamos) {
-                        if (p.getID().equals(id_prestamo)) {
+                        if (p.getId().equals(id_prestamo)) {
                                 prestamo = p;
                                 break;
                         }
@@ -729,7 +739,7 @@ public class Biblioteca {
                 // Buscamos el estudiante referente al prestamo
                 if (prestamo != null) {
                         for (Estudiante e : estudiantes) {
-                                if (e.getNumeroControl().equals(prestamo.getNumeroControlEstudiante())) {
+                                if (e.getNumeroControl().equals(prestamo.getNumeroControl())) {
                                         estudiante = e;
                                         break;
                                 }
@@ -741,10 +751,10 @@ public class Biblioteca {
                         libro.setDisponible(true);
 
                         // cambiamos el estado del libro como no deudor
-                        estudiante.isDeudor(false);
+                        estudiante.setDeudor(false);
 
                         // eliminamos el prestamo de la lista de prestamos
-                        prestamo.remove(prestamo);
+                        prestamos.remove(prestamo);
 
                         System.out.println("[SISTEMA] Devolucion Exitosa.");
                 } else if (libro == null || estudiante == null) {
