@@ -3,22 +3,6 @@
  * @ author: Oscar A. Teran
  * @ version: 1.0
  */
-
-// ...::: Pendientes ::::...
-/*
-* - metodos eliminarLibro()-eliminarRevista()-Mediante ID ---> sobrecarga(Libro-Revista)  [Hecho]
-* - metodos editarLibro() - editarRevista() - Mediante ID --> sobrecarga(Libro-Revista)   [Hecho]
-* - metodo devoluciones()                                                                 [Pendiente]
-* - metodo deudores()                                                                     [Hecho]
-* - generarTabla() --> sobrecarga(libros,estudiantes,revistas,prestamos)                  [Pendiente]
-* - calculo de fecha vencimiento                                                          [Hecho]
-* - titulo y alineacion de tablas de datos                                                [Hecho]
-* - sistema de prestamos                                                                  [Hecho 50%]
-* - metodos para crear o registrar libros y revistas                                      [Pendiente]
-* - debugear y corregir error en la devolución de revistas                                [Pendiente]
-* - revisar el método registro todo OK en                                                 [Pendiente]
-* - descomentar los prestamos                                                             [Pendiente]      
-*/
 package Sistemas_comp.Biblioteca_Java;
 
 import java.util.ArrayList;
@@ -34,7 +18,7 @@ public class Biblioteca {
         int opcion;
 
         // Arraylist de Documentos
-        Documento documentos[] = new Documento[100];
+        private ArrayList<Documento> documentos = new ArrayList<>();
         int cantidadDocumentos = 0;
 
         // ArrayList de Libros
@@ -46,7 +30,7 @@ public class Biblioteca {
         int cantidadRevistas = 0;
 
         // ArrayList de Estudiantes
-        ArrayList<Estudiante> estudiantes = new ArrayList<>();
+        private ArrayList<Estudiante> estudiantes = new ArrayList<>();
         int cantidadEstudiantes = 0;
 
         // ArrayList de Prestamos
@@ -121,7 +105,7 @@ public class Biblioteca {
                                                                                         break;
                                                                                 default:
                                                                                         System.out.println(
-                                                                                                        "[SISTEMA] La opcion "
+                                                                                                        "[ERROR] La opcion "
                                                                                                                         + opcionLibro
                                                                                                                         + " no es valida");
                                                                         }
@@ -156,7 +140,7 @@ public class Biblioteca {
                                                                                         break;
                                                                                 default:
                                                                                         System.out.println(
-                                                                                                        "[SISTEMA] La opción "
+                                                                                                        "[ERROR] La opción "
                                                                                                                         + opcionRevista
                                                                                                                         + " no es valida");
                                                                         }
@@ -165,7 +149,7 @@ public class Biblioteca {
                                                         case 3:
                                                                 break;
                                                         default:
-                                                                System.out.println("[SISTEMA] La opcion " + invOpcion
+                                                                System.out.println("[ERROR] La opcion " + invOpcion
                                                                                 + " no es valida");
                                                 }
                                         } while (invOpcion != 3);
@@ -199,7 +183,7 @@ public class Biblioteca {
 
                                                                 if (existePrestamo) {
                                                                         System.out.println(
-                                                                                        "[SISTEMA] El ID del préstamo ya existe. Por favor, ingrese un ID válido.");
+                                                                                        "[ERROR] El ID del préstamo ya existe. Por favor, ingrese un ID válido.");
                                                                         // Aquí puedes agregar el código adicional que
                                                                         // necesites
                                                                 } else {
@@ -221,7 +205,7 @@ public class Biblioteca {
                                                                 String id_prestamoRevista = sc.nextLine();
                                                                 boolean existePrestamo2 = false;
 
-                                                                // Ciclo for para settearla variable existePrestamo a
+                                                                // Ciclo for para settear la variable existePrestamo a
                                                                 // true
                                                                 for (Prestamo prestamo : prestamos) {
                                                                         if (prestamo.getId()
@@ -232,7 +216,7 @@ public class Biblioteca {
                                                                 }
                                                                 if (existePrestamo2) {
                                                                         System.out.println(
-                                                                                        "[SISTEMA] El ID del préstamo ya existe. Por favor, ingrese un ID válido.");
+                                                                                        "[ERROR] El ID del préstamo ya existe. Por favor, ingrese un ID válido.");
                                                                         // Aquí puedes agregar el código adicional que
                                                                         // necesites
                                                                 } else {
@@ -254,7 +238,7 @@ public class Biblioteca {
                                                         case 4:
                                                                 break;
                                                         default:
-                                                                System.out.println("[SISTEMA] La opcion " + subOpcion
+                                                                System.out.println("[ERROR] La opcion " + subOpcion
                                                                                 + " no valida");
                                                 }
                                         } while (subOpcion != 4);
@@ -272,7 +256,7 @@ public class Biblioteca {
                                         System.out.println("[SISTEMA] Saliendo del programa...");
                                         System.exit(0);
                                 default: // cualquier otra opción no es válida
-                                        System.out.println("[SISTEMA] La opción " + opcion + " no es válida");
+                                        System.out.println("[ERROR] La opción " + opcion + " no es válida");
                         } // fin del swith menú
                 } while (opcion != 5);
         }
@@ -282,11 +266,11 @@ public class Biblioteca {
                 // registro de array 20 estudiantes
 
                 estudiantes.add(new Estudiante("Cristian", "Echevarria", "Sistemas", "23760055", true));
-                estudiantes.add(new Estudiante("Oscar", "Teran", "Administracion", "23760066", false));
+                estudiantes.add(new Estudiante("Oscar", "Teran", "Sistemas", "23760066", false));
                 estudiantes.add(new Estudiante("Israel ", "Tejeda", "Administracion", "23760077", false));
                 estudiantes.add(new Estudiante("Cristian", "Malacara", "Sistemas", "23760087", false));
-                estudiantes.add(new Estudiante("Rosa", "Melano", "Sistemas", "23760097", false));
-                estudiantes.add(new Estudiante("Alma", "Marcela", "Sistemas", "23760108", false));
+                estudiantes.add(new Estudiante("Leticia", "Maya", "Industrial", "23760097", false));
+                estudiantes.add(new Estudiante("Alma", "Buena", "Sistemas", "23760108", false));
                 estudiantes.add(new Estudiante("Elvis", "Cocho", "Gestion", "23760058", false));
                 estudiantes.add(new Estudiante("Bad bunny", "Mamberroi", "Sistemas", "23760011", false));
                 estudiantes.add(new Estudiante("Luis Miguel", "Ferras", "Sistemas", "23760012", false));
@@ -296,7 +280,7 @@ public class Biblioteca {
                 estudiantes.add(new Estudiante("Gael ", "Olea", "Sistemas", "23760016", false));
                 estudiantes.add(new Estudiante("Alonso", "Marquez", "Sistemas", "23760017", false));
                 estudiantes.add(new Estudiante("Nestor", "Romero", "Sistemas", "23760018", false));
-                estudiantes.add(new Estudiante("Abelardo", "Castro", "Sistemas", "23760019", false));
+                estudiantes.add(new Estudiante("Abelardo", "God", "Sistemas", "23760019", false));
                 estudiantes.add(new Estudiante("Consuelo", "Sanchez", "Sistemas", "23760020", false));
                 estudiantes.add(new Estudiante("Alejandra", "Ruiz", "Industrial", "23760021", false));
                 estudiantes.add(new Estudiante("Luis", "Zazueta", "Industrial", "23760022", false));
@@ -346,37 +330,27 @@ public class Biblioteca {
                                 "Planeta", 3));
 
                 // Registrar Prestamos
-                prestamos.add(new Prestamo("0001", "23760055", "0001", new GregorianCalendar(2023, 10, 21),
-                                new GregorianCalendar(2023, 9, 28), false));
-                /*
-                 * prestamos.add(new Prestamo("002", "23760068", "0002", new
-                 * GregorianCalendar(2023, 10, 21),
-                 * new GregorianCalendar(2023, 10, 28), false));
-                 * prestamos.add(new Prestamo("003", "23760069", "0003", new
-                 * GregorianCalendar(2023, 10, 21),
-                 * new GregorianCalendar(2023, 10, 28), true));
-                 * prestamos.add(new Prestamo("004", "23760070", "0004", new
-                 * GregorianCalendar(2023, 10, 21),
-                 * new GregorianCalendar(2023, 10, 28), false));
-                 * prestamos.add(new Prestamo("005", "23760071", "0005", new
-                 * GregorianCalendar(2023, 10, 21),
-                 * new GregorianCalendar(2023, 10, 28), true));
-                 * prestamos.add(new Prestamo("006", "23760072", "0006", new
-                 * GregorianCalendar(2023, 10, 21),
-                 * new GregorianCalendar(2023, 10, 28), true));
-                 * prestamos.add(new Prestamo("007", "23760073", "0007", new
-                 * GregorianCalendar(2023, 10, 21),
-                 * new GregorianCalendar(2023, 10, 28), false));
-                 * prestamos.add(new Prestamo("008", "23760074", "0008", new
-                 * GregorianCalendar(2023, 10, 21),
-                 * new GregorianCalendar(2023, 10, 28), true));
-                 * prestamos.add(new Prestamo("009", "23760075", "0009", new
-                 * GregorianCalendar(2023, 10, 21),
-                 * new GregorianCalendar(2023, 10, 28), false));
-                 * prestamos.add(new Prestamo("0010", "23760076", "0010", new
-                 * GregorianCalendar(2023, 10, 21),
-                 * new GregorianCalendar(2023, 10, 28), false));
-                 */
+                prestamos.add(new Prestamo("0001", "23760055", "0001", new GregorianCalendar(2023, 9, 10),
+                                new GregorianCalendar(2023, 9, 17), false));
+                prestamos.add(new Prestamo("0002", "23760066", "0002", new GregorianCalendar(2023, 9, 12),
+                                new GregorianCalendar(2023, 9, 19), false));
+                prestamos.add(new Prestamo("0003", "23760077", "0003", new GregorianCalendar(2023, 9, 11),
+                                new GregorianCalendar(2023, 9, 18), true));
+                prestamos.add(new Prestamo("0004", "23760087", "0004", new GregorianCalendar(2023, 9, 15),
+                                new GregorianCalendar(2023, 9, 22), false));
+                prestamos.add(new Prestamo("0005", "23760097", "0005", new GregorianCalendar(2023, 9, 13),
+                                new GregorianCalendar(2023, 9, 20), true));
+                prestamos.add(new Prestamo("0006", "23760108", "0006", new GregorianCalendar(2023, 9, 21),
+                                new GregorianCalendar(2023, 10, 28), true));
+                prestamos.add(new Prestamo("0007", "23760058", "0007", new GregorianCalendar(2023, 9, 12),
+                                new GregorianCalendar(2023, 10, 19), false));
+                prestamos.add(new Prestamo("0008", "23760011", "0008", new GregorianCalendar(2023, 9, 23),
+                                new GregorianCalendar(2023, 10, 30), true));
+                prestamos.add(new Prestamo("0009", "23760012", "0009", new GregorianCalendar(2023, 9, 21),
+                                new GregorianCalendar(2023, 10, 28), false));
+                prestamos.add(new Prestamo("0010", "23760013", "0010", new GregorianCalendar(2023, 9, 21),
+                                new GregorianCalendar(2023, 10, 28), false));
+
         }
 
         // metodos generarTabla() aplican para metodo sobrecargado por ejemplo,
@@ -564,7 +538,7 @@ public class Biblioteca {
                                                         break;
                                                 default:
                                                         System.out.println(
-                                                                        "[SISTEMA] Opción no válida. Inténtalo de nuevo.");
+                                                                        "[ERROR] Opción no válida. Inténtalo de nuevo.");
                                                         break;
                                         }
                                 } while (opcion != 7);
@@ -574,7 +548,7 @@ public class Biblioteca {
 
                                 System.out.println("[SISTEMA] Libro actualizado en el inventario.");
                         } else {
-                                System.out.println("[SISTEMA] El libro con ID " + idLibro
+                                System.out.println("[ERROR] El libro con ID " + idLibro
                                                 + " no existe en el inventario.");
                         }
                 } while (true);
@@ -593,7 +567,7 @@ public class Biblioteca {
                                 return;
                         }
                 }
-                System.out.println("[SISTEMA] No se encontró ningún libro con el ID especificado.");
+                System.out.println("[ERROR] No se encontró ningún libro con el ID especificado.");
         }
 
         public void editarRevista() {
@@ -653,7 +627,6 @@ public class Biblioteca {
                                                         break;
                                                 case 4:
                                                         System.out.print("Nuevo ISSN: ");
-                                                        String nuevoISSN = sc.nextLine();
                                                         revista.setISSN(sc.nextLine());
                                                         System.out.println("[SISTEMA] ISBN actualizado con éxito.");
                                                         break;
@@ -673,7 +646,7 @@ public class Biblioteca {
                                                         break;
                                                 default:
                                                         System.out.println(
-                                                                        "[SISTEMA] Opción no válida. Inténtalo de nuevo.");
+                                                                        "[ERROR] Opción no válida. Inténtalo de nuevo.");
                                                         break;
                                         }
                                 } while (opcion != 7);
@@ -683,7 +656,7 @@ public class Biblioteca {
 
                                 System.out.println("[SISTEMA] Revista actualizada en el inventario.");
                         } else {
-                                System.out.println("[SISTEMA] La revista con ID " + idRevista
+                                System.out.println("[ERROR] La revista con ID " + idRevista
                                                 + " no existe en el inventario.");
                         }
                 } while (true);
@@ -702,7 +675,7 @@ public class Biblioteca {
                                 return;
                         }
                 }
-                System.out.println("[SISTEMA] No se encontro ninguna revista con el ID especificado.");
+                System.out.println("[ERROR] No se encontro ninguna revista con el ID especificado.");
         }
 
         void inventarioRevistas() {
@@ -715,8 +688,11 @@ public class Biblioteca {
 
         void devoluciones(String id_prestamo) {
                 Prestamo prestamo = null;
-                Libro libro = null;
+                Documento documento = null;
                 Estudiante estudiante = null;
+
+                // fusionar array libros y revistas
+                documentos.addAll(libros);
 
                 // buscamos el prestamo por el ID
                 for (Prestamo p : prestamos) {
@@ -726,11 +702,11 @@ public class Biblioteca {
                         }
                 }
 
-                // Buscamos el libro referente al prestamo
+                // Buscamos el libro o revista referente al prestamo
                 if (prestamo != null) {
-                        for (Libro l : libros) {
-                                if (l.getID().equals(prestamo.getIdDocumento())) {
-                                        libro = l;
+                        for (Documento doc : documentos) {
+                                if (doc.getID().equals(prestamo.getIdDocumento())) {
+                                        documento = doc;
                                         break;
                                 }
                         }
@@ -746,21 +722,20 @@ public class Biblioteca {
                         }
                 }
 
-                if (libro != null && estudiante != null) {
+                if (documento != null && estudiante != null) {
                         // cambiamos el estado del libro a disponible
-                        libro.setDisponible(true);
-
+                        documento.setDisponible(true);
                         // cambiamos el estado del libro como no deudor
                         estudiante.setDeudor(false);
 
                         // eliminamos el prestamo de la lista de prestamos
                         prestamos.remove(prestamo);
 
-                        System.out.println("[SISTEMA] Devolucion Exitosa.");
-                } else if (libro == null || estudiante == null) {
-                        System.out.println("[SISTEMA] No se encontro nigun libro o estudiante asociado al prestamo.");
+                        System.out.println("[SISTEMA] Devolución exitosa.");
+                } else if (documento == null || estudiante == null) {
+                        System.out.println("[ERROR] No se encontro nigun libro o estudiante asociado al prestamo.");
                 } else {
-                        System.out.println("[SISTEMA] No se encontro un prestamo con el ID ingresado.");
+                        System.out.println("[ERROR] No se encontró un prestamo con el ID ingresado.");
                 }
         }
 
@@ -817,11 +792,11 @@ public class Biblioteca {
                         prestamos.add(prestamo);
                         System.out.println("[SISTEMA] Libro prestado exitosamente.");
                 } else if (libro != null && !libro.isDisponible()) {
-                        System.out.println("[SISTEMA] El libro ya se encuentra prestado.");
+                        System.out.println("[ERROR] El libro ya se encuentra prestado.");
                 } else if (estudiante == null) {
-                        System.out.println("[SISTEMA] El estudiante no existe.");
+                        System.out.println("[ERROR] El estudiante no existe.");
                 } else {
-                        System.out.println("[SISTEMA] El libro no existe en el inventario.");
+                        System.out.println("[ERROR] El libro no existe en el inventario.");
                 }
         }
 
@@ -854,11 +829,11 @@ public class Biblioteca {
                         prestamos.add(prestamo);
                         System.out.println("[SISTEMA] Revista prestada exitosamente.");
                 } else if (revista != null && !revista.isDisponible()) {
-                        System.out.println("[SISTEMA] La revista ya se encuentra prestado.");
+                        System.out.println("[ERROR] La revista ya se encuentra prestado.");
                 } else if (estudiante == null) {
-                        System.out.println("[SISTEMA] El estudiante no existe.");
+                        System.out.println("[ERROR] El estudiante no existe.");
                 } else {
-                        System.out.println("[SISTEMA] La revista no existe en el inventario.");
+                        System.out.println("[ERROR] La revista no existe en el inventario.");
                 }
         }
 

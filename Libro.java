@@ -24,7 +24,7 @@ public class Libro extends Documento {
     public Libro(String titulo, String autor, String ID, int anioPublicacion, boolean disponible, String iSBN,
             String editorial, int edicion) {
         super(titulo, autor, ID, anioPublicacion, disponible);
-        ISBN = iSBN;
+        this.ISBN = iSBN;
         this.editorial = editorial;
         this.edicion = edicion;
     }
