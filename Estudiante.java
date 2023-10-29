@@ -71,6 +71,29 @@ public class Estudiante {
         this.deudor = deudor;
     }
 
+    void generarTabla() {
+        // Imprimir la cabecera de la tabla
+        System.out.println(
+                "____________________________________________________________________\n");
+        System.out.printf("%-15s %-17s %-20s %-20s\n",
+                "No. Control", "Nombre", "Apellido", "Carrera");
+        System.out.println(
+                "__________________________________________________________________________");
+
+        // Recorrer arraylist de estudiantes y mostrar la información de cada
+        // estudiante
+        for (Estudiante estudiante : estudiantes) {
+            System.out.printf("%-15s %-17s %-20s %-20s\n",
+                    estudiante.getNumeroControl(),
+                    estudiante.getNombre(),
+                    estudiante.getApellido(),
+                    estudiante.getCarrera());
+        }
+        // Pie de la tabla
+        System.out.println(
+                "____________________________________________________________________________");
+    }
+
     @Override
     public String toString() {
         return "Informacion Estudiante:\n" +

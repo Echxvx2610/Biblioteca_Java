@@ -1,9 +1,9 @@
 @startuml Bibiblioteca
-Revista --> Documento
-Libro --> Documento
-Documento --> Biblioteca
-Estudiante --> Biblioteca
-
+Revista --|> Documento
+Libro --|> Documento
+Documento "1" --o "0...*"Biblioteca : Contiene
+Estudiante "1"--o "0...*"Biblioteca : Acuden
+Prestamo "1"--o "0...*"Biblioteca : Realiza
 title
 Diagrama de Clases Biblioteca
 end title
@@ -15,8 +15,29 @@ class Biblioteca{
     // Esto es un comentario de bloque
     // proximos codigos
 '/
+    + Arraylist documentos
+    + Arraylist revistas
+    + Arraylist libros
+    + Arraylist estudiantes
+    + Arraylist prestamos
+    ---
     + main()
-
+    + registro()
+    + generarTablaEstudiantes()
+    + generarTablaLibros()
+    + generarTablaRevistas()
+    + generarTablaPrestamos()
+    + editarLibro()
+    + editarRevista()
+    + eliminarLibro()
+    + eliminarRevista()
+    + devoluciones()
+    + deudores()
+    + prestarLibro()
+    + prestarRevista()
+    + crearPrestamo()
+    + obtenerFechaActual()
+    + calcularFechaVencimiento()
 /'
     //proximos metodos
 '/
@@ -24,14 +45,27 @@ class Biblioteca{
 
 class Documento{
     'Atributos
-    + String Titulo 
+    + String titulo 
     + String autores
     + int id 
     + GregorianCalendar anioPublicacion
-    + boolean disponibilidad
+    + boolean disponible
     'Metodos
     + Documento()
-    + Documento(Atributos)
+    + Documento(String titulo, String autores, int id, GregorianCalendar anioPublicacion, boolean disponible)
+    + getTitulo()
+    + setTitulo(String titulo)
+    + getAutor()
+    + setAutor(String autor)
+    + getID()
+    + setID()
+    + getAnioPublicacion()
+    + setAnioPublicacion(gregorianCalendar anioPublicacion)
+    + getDisponible()
+    + setDisponible(boolean disponible)
+    + getIds()
+    + setIds(Set<String> ids)
+    + toString()
 }   
 
 class Revista{
@@ -39,9 +73,18 @@ class Revista{
     + String ISSN
     + String nombre
     + int Volumen
-    'Comentario de una linea
+    'Metodos
+    + Revista()
+    + Revista(String Titulo , String Autor, int id, GregorianCalendar anioPublicacion, boolean disponible, String ISSN, String nombre, int Volumen)
     + prestamo()
-    + devolucion()
+    + getISSN()
+    + setISSN(String ISSN)
+    + getNombre()
+    + setNombre(String nombre)
+    + getVolumen()
+    + setVolumen(int Volumen)
+    + toString()
+    
 }
 
 class Libro{
@@ -49,9 +92,64 @@ class Libro{
     + String ISBN
     + String editorial
     + String edicion
-    'Comentario de una linea
-    + prestamo()
-    + devolucion()
+    'Metodos
+    + Libro()
+    + Libro(String Titulo , String Autor, int id, GregorianCalendar anioPublicacion, boolean disponible, String ISBN, String editorial, String edicion)
+    + getISBN()
+    + setISBN(String ISBN)
+    + getEditorial()
+    + setEditorial(String editorial)
+    + getEdicion()
+    + setEdicion(int edicion)
+    + toString()
+}
+class Estudiante{
+    'Atributos
+    + String nombre
+    + String apellido
+    + String carrera 
+    + String numeroControl
+    + boolean deudor()
+    'Metodos
+    + Estudiante()
+    + Estudiante(String nombre, String apellido, String carrera, String numeroControl)
+    + getNombre()
+    + setNombre(String nombre)
+    + getApellido()
+    + setApellido(String apellido)
+    + getCarrera()
+    + setCarrera(String carrera)
+    + getNumeroControl()
+    + setNumeroControl(String numeroControl)
+    + isDeudor()
+    + setDeudor(boolean deudor)
+    + toString()
+}
+
+class Prestamo{
+    'Atributos
+    + String id
+    + String numeroControl
+    + String idDocumento()
+    + GregorianCalendar fechaPrestamo
+    + GregorianCalendar fechaVencimiento
+    + boolean conAtraso
+    'Metodos
+    + Prestamo()
+    + Prestamo(String id, String numeroControl, String idDocumento, GregorianCalendar fechaPrestamo, GregorianCalendar fechaVencimiento, boolean conAtraso)
+    + getId()
+    + setId(String id)
+    + getNumeroControl()
+    + setNumeroControl(String numeroControl)
+    + getIdDocumento()
+    + setIdDocumento(String idDocumento)
+    + getFechaPrestamo()
+    + setFechaPrestamo(GregorianCalendar fechaPrestamo)
+    + getFechaVencimiento()
+    + setFechaVencimiento(GregorianCalendar fechaVencimiento)
+    + isConAtraso()
+    + setConAtraso(boolean conAtraso)
+    + toString()    
 }
 
 @enduml

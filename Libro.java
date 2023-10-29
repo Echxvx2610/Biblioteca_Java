@@ -55,6 +55,32 @@ public class Libro extends Documento {
         this.edicion = edicion;
     }
 
+    void generarTabla() {
+        // Imprimir la cabecera de la tabla
+        System.out.println(
+                "_______________________________________________________________________________________________________________________\n");
+        System.out.printf("%-7s %-25s %-20s %-10s %-12s %-20s %-10s %-5s\n",
+                "ID", "Titulo", "Autor", "Año Pub.",
+                "Edición", "ISBN", "Editorial", "Disponible");
+        System.out.println(
+                "_______________________________________________________________________________________________________________________");
+
+        for (Libro libro : libros) {
+            System.out.printf("%-7s %-25s %-20s %-12s %-10s %-20s %-10s %-5s\n",
+                    libro.getID(),
+                    libro.getTitulo(),
+                    libro.getAutor(),
+                    libro.getAnioPublicacion(),
+                    libro.getEdicion(),
+                    libro.getISBN(),
+                    libro.getEditorial(),
+                    libro.isDisponible());
+        }
+        // Pie de la tabla
+        System.out.println(
+                "_______________________________________________________________________________________________________________________\n");
+    }
+
     public String toString() {
         return super.toString() +
                 "ISBN: " + ISBN + "\n" +

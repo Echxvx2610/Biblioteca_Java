@@ -51,6 +51,32 @@ public class Revista extends Documento {
         this.volumen = volumen;
     }
 
+    void generarTabla() {
+        // Imprimir la cabecera de la tabla
+        System.out.println(
+                "________________________________________________________________________________________________________\n");
+        System.out.printf("%-7s %-20s %-15s %-10s %-9s %-20s %-10s %-10s\n",
+                "ID", "Titulo", "Autor", "Año_Pub",
+                "Disp", "ISSN", "Nombre", "Vol");
+        System.out.println(
+                "________________________________________________________________________________________________________");
+
+        for (Revista revista : revistas) {
+            System.out.printf("%-7s %-20s %-15s %-10s %-9s %-20s %-10s %-10s\n",
+                    revista.getID(),
+                    revista.getTitulo(),
+                    revista.getAutor(),
+                    revista.getAnioPublicacion(),
+                    revista.isDisponible(),
+                    revista.getISSN(),
+                    revista.getNombre(),
+                    revista.getVolumen());
+        }
+        // Pie de la tabla
+        System.out.println(
+                "_____________________________________________________________________________________________________\n");
+    }
+
     @Override
     public String toString() {
         return super.toString() +

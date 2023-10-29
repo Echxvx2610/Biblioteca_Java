@@ -10,6 +10,7 @@ package Sistemas_comp.Biblioteca_Java;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 
 public class Prestamo {
@@ -107,6 +108,33 @@ public class Prestamo {
 
     public static void setIds(Set<String> ids) {
         Prestamo.ids = ids;
+    }
+
+    void generarTabla() {
+        // Imprimir la cabecera de la tabla
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        System.out.println(
+                "______________________________________________________________________________________\n");
+        System.out.printf("%-5s %-10s %-13s %-18s %-20s %-10s\n",
+                "ID", "No_Control", "ID_Documento", "Fecha_Prestamo", "Fecha_Vencimiento",
+                "Con Atraso");
+        System.out.println(
+                "______________________________________________________________________________________");
+
+        for (Prestamo prestamo : prestamos) {
+            String fechaPrestamoStr = dateFormat.format(prestamo.getFechaPrestamo().getTime());
+            String fechaVencimientoStr = dateFormat.format(prestamo.getFechaVencimiento().getTime());
+            System.out.printf("%-5s %-15s %-8s %-20s %-20s %-10s\n",
+                    prestamo.getId(),
+                    prestamo.getNumeroControl(),
+                    prestamo.getIdDocumento(),
+                    fechaPrestamoStr,
+                    fechaVencimientoStr,
+                    prestamo.isConAtraso());
+        }
+        // Pie de la tabla
+        System.out.println(
+                "______________________________________________________________________________________");
     }
 
     // método toString
